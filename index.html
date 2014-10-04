@@ -10,13 +10,21 @@
     <body>
         <div class="container">
             <div id="login-modal" class="hidden">
-                <div class="login-box input-group">
-                  <input type="text" class="form-control">
-                  <input type="text" class="form-control">
-                  <input type="text" class="form-control">
-                  <div class="input-group-btn">
-                    test
-                  </div>
+                <div class="login-box">
+                    <form>
+                        <div class="form-group">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" class="form-controll" id="inputEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" class="form-controll" id="inputPassword" placeholder="Password">
+                        </div>
+                        <!-- <div class="checkbox">
+                            <label><input type="checkbox"> Remember me</label>
+                        </div> -->
+                        <button type="submit" class="btn btn-default">Login</button>
+                    </form>
                 </div>
             </div>
 

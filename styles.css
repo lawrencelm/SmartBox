@@ -51,7 +51,7 @@ body {
     position:fixed;
     z-index:5;
     left:50%;
-    transform: translateX(-37%);
+    transform: translateX(-40%);
     display:block;
 }
 
@@ -160,9 +160,19 @@ input {
     background-color: white;
     border: gray 10px solid;
     margin: 0 auto;
-    margin-top: 20%;
+    margin-top: 10%;
+    padding:20px;
+    width:50%;
 }
 
-.login-box input {
-    margin:20px 20px;
+.form-controll {
+    border:none;
+    background-color: whitesmoke;
+    padding:10px;
+    margin-left:15px;
+    border-radius: 0px;
+}
+
+.form-controll:focus {
+    outline:none;
 }
