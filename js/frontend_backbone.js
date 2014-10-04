@@ -8,43 +8,39 @@ $(document).ready(function() {
             /*$('#searchPrefix').css({'display': 'inline-block'});*/
         }
     });
+    
     $('#login-button').click(function() {
         $('#login-modal').removeClass('hidden');
     });
 
-});
+    $(document).on("submit", "#submitLogin", function(e) {
+        e.preventDefault();
+        var username = document.getElementById('inputUsername').value;     
+        var password = document.getElementById('inputPassword').value;
+        var email = document.getElementById('inputEmail').value;
+        var user = new Parse.User();
+        user.set('username', username);
+        user.set('password', password);
+        user.set('email', email);
+        console.log(user);
+        user.signUp(null, {
+            success: function(user) {
+            // Hooray! Let them use the app now.
+            },
+            error: function(user, error) {
+            // Show the error message somewhere and let the user try again.
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+    });
 
-Parse.initialize('Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy', 'Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv');
+});
 
 //LOGIN//
-$('#submitLogin').click(function() {
-    register();
-});
 
-var register = function() {
-    var user = new Parse.User();
-    //var user = new Parse.User();
-    /*var inputUsername = $('#inputUsername').val();
-    var inputPassword = $('#inputPassword').val();
-    var inputEmail = $('#inputEmail').val();*/
-    alert();
-    user.set('username', 'asdf');
-    user.set('password', 'asdfasdfasdf');
-    user.set('email', 'asdasdf@asdfasdf.com');
-    console.log(user);
-    user.signUp(null, {
-        success: function(user) {
-        // Hooray! Let them use the app now.
-        },
-        error: function(user, error) {
-        // Show the error message somewhere and let the user try again.
-            alert("Error: " + error.code + " " + error.message);
-        }
-    });
-}
+
 
 var Results = Backbone.Collection.extend({
-
     model: Result_Item,
 });
 
