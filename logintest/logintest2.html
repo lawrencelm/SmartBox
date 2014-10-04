@@ -2,7 +2,8 @@
 <head>
   <meta charset="utf-8">
 
-  <title>SmartBox</title>
+  <title>My Parse App</title>
+  <meta name="description" content="My Parse App">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -11,21 +12,39 @@
 </head>
 
 <body>
-  <script>
-    // Initialize Parse
-    Parse.initialize("Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy", "Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv");
-   
+  <script type="text/javascript">
+    Parse.initialize("Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy", "Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv");    
+    var TestObject = Parse.Object.extend("TestObject");
+    var testObject = new TestObject();
+      testObject.save({foo: "bar"}, {
+      success: function(object) {
+        $(".success").show();
+      },
+      error: function(model, error) {
+        $(".error").show();
+      }
+    });
     window.fbAsyncInit = function() {
       Parse.FacebookUtils.init({ // this line replaces FB.init({
-        appId      : '{facebook-app-id}', // Facebook App ID
+        appId      : '776528155719372', // Facebook App ID
         status     : true, // check Facebook Login status
         cookie     : true, // enable cookies to allow Parse to access the session
         xfbml      : true
       });
-   
-      // Run code after the Facebook SDK is loaded.
+      Parse.FacebookUtils.logIn(null, {
+        success: function(user) {
+          if (!user.existed()) {
+            alert("User signed up and logged in through Facebook!");
+          } else {
+            alert("User logged in through Facebook!");
+          }
+        },
+        error: function(user, error) {
+          alert("User cancelled the Facebook login or did not fully authorize.");
+        }
+      });
     };
-   
+
     (function(d, s, id){
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {return;}
@@ -60,38 +79,30 @@
     </div>
   </div>
 
-  /*<script type="text/javascript">
-    Parse.initialize("Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy", "  Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv");// initialize Parse app client
-    
-    //CREATE NEW USER- NEEDS INPUT FIELDS FROM HTML
-    var user = new Parse.User();
-    user.set("username", "ducnguy");
-    user.set("password", "STANFORD");
-    user.set("email","ducnguy@stanford.edu");
+  <script type="text/javascript">
 
-    //SIGNING UP THE USER TO THE DATABASE
-    user.signUp(null, {
-      success: function(user) {
-        // Hooray! Let them use the app now.
-      },
-      error: function(user, error) {
-        // Show the error message somewhere and let the user try again.
-        alert("Error: " + error.code + " " + error.message);
-      }
-    });
 
-    //FACEBOOK LOGIN
-    window.fbAsyncInit = function() {
-    Parse.FacebookUtils.init({ // this line replaces FB.init({
-      appId      : '776528155719372', // Facebook App ID
-      status     : true, // check Facebook Login status
-      cookie     : true, // enable cookies to allow Parse to access the session
-      xfbml      : true
-    });
-    // Run code after the Facebook SDK is loaded.
-    };
+
+    /*var user = new Parse.User();
+      user.set("username", "my name");
+      user.set("password", "my pass");
+      user.set("email", "email@example.com");
+       
+      // other fields can be set just like with Parse.Object
+      user.set("phone", "415-392-0202");
+       
+      user.signUp(null, {
+        success: function(user) {
+          // Hooray! Let them use the app now.
+        },
+        error: function(user, error) {
+          // Show the error message somewhere and let the user try again.
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });*/
   </script>
-  */
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+  </fb:login-button>
 </body>
 
 </html>
