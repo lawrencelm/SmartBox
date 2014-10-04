@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+
 body {
     text-align: center;
 }
@@ -65,4 +67,22 @@ body {
 
 #query {
     color:white;
+}
+
+input {
+    padding: 15px;
+}
+
+#searchInput {
+    border: none;
+    height: 48px;
+    font-size: 30px;
+    font-family: Open Sans;
+    font-weight: 300;
+    background: red;
+    padding: 30px;
+}
+
+#searchInput:focus {
+    outline: none;
 }
