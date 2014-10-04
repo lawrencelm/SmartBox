@@ -11,7 +11,7 @@ body {
     top:0;
     height:800px;
     width:100%;
-    background-color: gray;
+    background-color: white;
     position:fixed;
       -webkit-transition-duration: 0.5s;
       -moz-transition-duration: 0.5s;
@@ -29,7 +29,7 @@ body {
 
 .searchbox.submitted {
     margin-top: -50px;
-    transition:.5s;
+    transition:.3s;
 }
 
 .searchLanding.submitted {
@@ -37,10 +37,10 @@ body {
 }
 
 #navigation {
-    top: -30px;
+    top: -40px;
     position:fixed;
     z-index:2;
-    height:30px;
+    height:40px;
     background-color: black;
     width:100%;
 }
@@ -48,4 +48,18 @@ body {
 #navigation.submitted {
     top:0;
     transition: .5s;
+}
+
+#navigationText {
+    color:white;
+    margin-top:3px;
+    font-size: 1.4em;
+}
+
+.queryPrefix {
+    color:gray;
+}
+
+#query {
+    color:white;
 }

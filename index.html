@@ -8,6 +8,7 @@
     <body>
         <div class="container">
             <div id="navigation">
+                <p id="navigationText"><span class="queryPrefix">showing results for: </span></p>
             </div>
             <div class="searchLanding">
                 <div class="searchbox">
@@ -20,6 +21,8 @@
         $(document).ready(function() {
             $('body').keypress(function(e) {
                 if (e.keyCode === 13) {
+                    var query = $('#searchinput').val();
+                    $('p#navigationText').append('<span id="query">' + query + '</span>');
                     $('.searchLanding, #navigation, .searchbox').addClass('submitted');
                 }
             });
