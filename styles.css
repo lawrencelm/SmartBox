@@ -11,11 +11,32 @@ body {
     padding: 0;
 }
 
+.searchLanding-bg {
+    top:0;
+    height:800px;
+    width:100%;
+    position:fixed;
+    z-index:0;
+    background-size: cover;
+    background-image: url('http://freelargephotos.com/000519_l.jpg');
+    background-position: center;
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+
 .searchLanding {
     top:0;
     height:800px;
     width:100%;
+<<<<<<< HEAD
     /*background-color: white;*/
+=======
+    z-index:1;
+    background-color: white;
+>>>>>>> 36500bbb98605baa4b0a46b7cb8b7a8a6345fd3f
     position:fixed;
       -webkit-transition-duration: 0.5s;
       -moz-transition-duration: 0.5s;
@@ -23,7 +44,12 @@ body {
       transition-duration: 0.5s;
 /*    background-size: cover;
     background-image: url('http://hdwallpapers360.com/wp-content/uploads/color-blurry-background.jpg');
+<<<<<<< HEAD
     background-position: center;*/
+=======
+    background-position: center;
+    text-align: center;
+>>>>>>> 36500bbb98605baa4b0a46b7cb8b7a8a6345fd3f
 }
 
 .searchbox {
@@ -33,6 +59,7 @@ body {
     font-size: 40px;
     outline:none;
     position:fixed;
+<<<<<<< HEAD
     z-index:5;
     left:50%;
     transform: translateX(-37%);
@@ -42,6 +69,22 @@ body {
 .searchbox.submitted {
     margin-top: -80px;
     transition:.3s;
+=======
+    right: 50%;
+    transform: translateX(50%);
+    z-index:2;
+
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+}
+
+.searchbox.submitted {
+    margin-top: -100px;
+    transition:.2s;
+>>>>>>> 36500bbb98605baa4b0a46b7cb8b7a8a6345fd3f
 }
 
 .searchLanding.submitted {
