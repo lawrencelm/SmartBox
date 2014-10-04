@@ -1,9 +1,29 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <p>hello world</p>
+        <div class="container">
+            <div id="navigation">
+            </div>
+            <div class="searchLanding">
+                <div class="searchbox">
+                    <input id="searchinput" type="text" placeholder="enter search query"></input>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        $(document).ready(function() {
+            $('body').keypress(function(e) {
+                if (e.keyCode === 13) {
+                    $('.searchLanding, #navigation, .searchbox').addClass('submitted');
+                }
+            });
+        });
+        </script>
     </body>
 </html>
