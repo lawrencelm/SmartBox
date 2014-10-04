@@ -64,6 +64,10 @@ $(document).ready(function() {
     $('body').keypress(function(e) {
         if (e.keyCode === 13) {
             var query = $('#searchinput').val();
+            var response;
+            requestEbay(query, function(data) {
+                response = data.
+            }
             /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
             $('.searchLanding, #navigation, .searchbox').addClass('submitted');
             /*$('#searchPrefix').css({'display': 'inline-block'});*/
