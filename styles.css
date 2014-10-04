@@ -31,12 +31,7 @@ body {
     top:0;
     height:800px;
     width:100%;
-    /*background-color: white;*/
     position:fixed;
-      -webkit-transition-duration: 0.5s;
-      -moz-transition-duration: 0.5s;
-      -o-transition-duration: 0.5s;
-      transition-duration: 0.5s;
 /*    background-size: cover;
     background-image: url('http://hdwallpapers360.com/wp-content/uploads/color-blurry-background.jpg');
     background-position: center;*/
@@ -162,17 +157,35 @@ input {
     margin: 0 auto;
     margin-top: 10%;
     padding:20px;
-    width:50%;
+    width:35%;
+}
+
+.login-box table {
+    margin: 0 auto;
+    border-spacing:5px;
 }
 
 .form-controll {
     border:none;
     background-color: whitesmoke;
-    padding:10px;
+    padding:2px;
     margin-left:15px;
     border-radius: 0px;
 }
 
 .form-controll:focus {
     outline:none;
+}
+
+/*BACKBONE FORMATTING*/
+
+.result_item {
+    position:relative;
+    display: inline-block;
+    width:200px;
+    height:200px;
+    margin-right:30px;
+    margin-bottom:30px;
+    background-color: yellow;
+    padding:10px;
 }
