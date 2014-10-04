@@ -151,6 +151,30 @@ input {
     display:none;
 }
 
+.wisteria-flat-button {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #8e44ad;
+  border: 0;
+  border-bottom: 2px solid #80399d;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #80399d;
+  box-shadow: inset 0 -2px #80399d;
+}
+.wisteria-flat-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .login-box {
     position:relative;
     background-color: white;
