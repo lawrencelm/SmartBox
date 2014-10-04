@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
 
 body {
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .container {
@@ -15,27 +15,32 @@ body {
     top:0;
     height:800px;
     width:100%;
-    background-color: white;
+    /*background-color: white;*/
     position:fixed;
       -webkit-transition-duration: 0.5s;
       -moz-transition-duration: 0.5s;
       -o-transition-duration: 0.5s;
       transition-duration: 0.5s;
-    background-size: cover;
+/*    background-size: cover;
     background-image: url('http://hdwallpapers360.com/wp-content/uploads/color-blurry-background.jpg');
-    background-position: center;
+    background-position: center;*/
 }
 
 .searchbox {
     margin-top: 20%;
     border: none;
     font-family: Helvetica;
-    font-size: 48px;
+    font-size: 40px;
     outline:none;
+    position:fixed;
+    z-index:5;
+    left:50%;
+    transform: translateX(-37%);
+    display:block;
 }
 
 .searchbox.submitted {
-    margin-top: -50px;
+    margin-top: -80px;
     transition:.3s;
 }
 
@@ -43,21 +48,30 @@ body {
     /*display:none;*/
 }
 
+#searchPrefix {
+    position:absolute;
+    z-index:3;
+    left: -200px;
+    font-size:.5em;
+    display:none;
+}
+
 .navbar .navbar-nav {
   display: inline-block;
   float: none;
   vertical-align: top;
+  text-align:default;
 }
 
 #navigation {
-    top: -40px;
+    top: -58px;
     z-index:2;
     width:100%;
     border-radius: 0px;
+    height:60px;
 }
 
 #navElems {
-    text-align: center;
 }
 
 #navigation.submitted {
@@ -89,7 +103,7 @@ input {
     font-size: 26px;
     font-family: Open Sans;
     font-weight: 300;
-    background: #ffffff;
+    background: rgba(240, 240, 240, 1);
     padding: 30px;
 }
 
@@ -98,11 +112,41 @@ input {
 }
 
 .navbar-inverse {
-    background: rgba(240, 240, 240, 0.6);
+    /*background: rgba(184, 153, 189, 0.6);*/
+    background: none;
 }
 
 .logo {
     color: white; 
     font-family: Open Sans; 
     margin-bottom: 15px;
+}
+
+
+#login-modal {
+    position:fixed;
+    z-index:99;
+    height:100%;
+    width:100%;
+    background-color: rgba(0,0,0,0.7);
+    display:block;
+    transition: background-color 0.5s;
+}
+
+#login-modal.hidden {
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: background-color 0.3s;
+    display:none;
+}
+
+.login-box {
+    position:relative;
+    background-color: white;
+    border: gray 10px solid;
+    margin: 0 auto;
+    margin-top: 20%;
+}
+
+.login-box input {
+    margin:20px 20px;
 }
