@@ -21,6 +21,9 @@ body {
       -moz-transition-duration: 0.5s;
       -o-transition-duration: 0.5s;
       transition-duration: 0.5s;
+    background-size: cover;
+    background-image: url('http://hdwallpapers360.com/wp-content/uploads/color-blurry-background.jpg');
+    background-position: center;
 }
 
 .searchbox {
@@ -82,8 +85,8 @@ input {
 
 #searchInput {
     border: none;
-    height: 48px;
-    font-size: 30px;
+    height: 38px;
+    font-size: 26px;
     font-family: Open Sans;
     font-weight: 300;
     background: #ffffff;
@@ -96,4 +99,10 @@ input {
 
 .navbar-inverse {
     background: rgba(240, 240, 240, 0.6);
+}
+
+.logo {
+    color: white; 
+    font-family: Open Sans; 
+    margin-bottom: 15px;
 }
