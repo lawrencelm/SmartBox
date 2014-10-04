@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.min.js"></script>
         <link rel="stylesheet" href="styles.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -22,16 +23,6 @@
             </div>
         </div>
 
-        <script>
-        $(document).ready(function() {
-            $('body').keypress(function(e) {
-                if (e.keyCode === 13) {
-                    var query = $('#searchinput').val();
-                    $('#navigationText>a').append('<span id="query">' + query + '</span>');
-                    $('.searchLanding, #navigation, .searchbox').addClass('submitted');
-                }
-            });
-        });
-        </script>
+        <script src="js/frontend_backbone.js"></script>
     </body>
 </html>
