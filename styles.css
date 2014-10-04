@@ -50,6 +50,7 @@ body {
     top: -40px;
     z-index:2;
     width:100%;
+    border-radius: 0px;
 }
 
 #navElems {
@@ -62,11 +63,17 @@ body {
 }
 
 .queryPrefix {
-    color:gray;
+    color: #333;
+    font-family: Open Sans;
+    font-weight: 300;
+    font-size: 22px;
 }
 
 #query {
-    color:white;
+    color: #333;
+    font-family: Open Sans;
+    font-weight: 300;
+    font-size: 22px;
 }
 
 input {
@@ -85,4 +92,8 @@ input {
 
 #searchInput:focus {
     outline: none;
+}
+
+.navbar-inverse {
+    background: rgba(240, 240, 240, 0.6);
 }
