@@ -11,10 +11,27 @@ body {
     padding: 0;
 }
 
+.searchLanding-bg {
+    top:0;
+    height:800px;
+    width:100%;
+    position:fixed;
+    z-index:0;
+    background-size: cover;
+    background-image: url('http://freelargephotos.com/000519_l.jpg');
+    background-position: center;
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+
 .searchLanding {
     top:0;
     height:800px;
     width:100%;
+    z-index:1;
     background-color: white;
     position:fixed;
       -webkit-transition-duration: 0.5s;
@@ -24,6 +41,7 @@ body {
     background-size: cover;
     background-image: url('http://hdwallpapers360.com/wp-content/uploads/color-blurry-background.jpg');
     background-position: center;
+    text-align: center;
 }
 
 .searchbox {
@@ -32,11 +50,21 @@ body {
     font-family: Helvetica;
     font-size: 48px;
     outline:none;
+    position:fixed;
+    right: 50%;
+    transform: translateX(50%);
+    z-index:2;
+
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
 }
 
 .searchbox.submitted {
-    margin-top: -50px;
-    transition:.3s;
+    margin-top: -100px;
+    transition:.2s;
 }
 
 .searchLanding.submitted {
@@ -51,7 +79,7 @@ body {
 
 #navigation {
     top: -40px;
-    z-index:2;
+    z-index:3;
     width:100%;
     border-radius: 0px;
 }

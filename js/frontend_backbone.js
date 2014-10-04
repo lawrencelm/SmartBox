@@ -9,3 +9,10 @@ $(document).ready(function() {
     });
 });
 
+var result_item = Backbone.Model.extend({
+    tagName: "div",
+    className: "result_item",
+    render: function() {
+        
+    }
+});
