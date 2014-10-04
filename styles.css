@@ -3,7 +3,9 @@ body {
 }
 
 .container {
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width:100%;
     padding: 0;
 }
 
@@ -36,24 +38,25 @@ body {
     /*display:none;*/
 }
 
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
 #navigation {
     top: -40px;
-    position:fixed;
     z-index:2;
-    height:40px;
-    background-color: black;
     width:100%;
+}
+
+#navElems {
+    text-align: center;
 }
 
 #navigation.submitted {
     top:0;
     transition: .5s;
-}
-
-#navigationText {
-    color:white;
-    margin-top:3px;
-    font-size: 1.4em;
 }
 
 .queryPrefix {

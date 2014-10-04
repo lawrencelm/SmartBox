@@ -7,9 +7,14 @@
     </head>
     <body>
         <div class="container">
-            <div id="navigation">
-                <p id="navigationText"><span class="queryPrefix">showing results for: </span></p>
-            </div>
+            <nav id="navigation" class="navbar navbar-inverse" role="navigation">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav"  id="navElems">
+                        <li id="navigationText"><a><span class="queryPrefix">showing results for: </span>
+                        </a></li>
+                    </ul>
+                </div>
+            </nav>
             <div class="searchLanding">
                 <div class="searchbox">
                     <input id="searchinput" type="text" placeholder="enter search query"></input>
@@ -22,7 +27,7 @@
             $('body').keypress(function(e) {
                 if (e.keyCode === 13) {
                     var query = $('#searchinput').val();
-                    $('p#navigationText').append('<span id="query">' + query + '</span>');
+                    $('#navigationText>a').append('<span id="query">' + query + '</span>');
                     $('.searchLanding, #navigation, .searchbox').addClass('submitted');
                 }
             });
