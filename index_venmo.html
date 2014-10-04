@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+        <script src="js/annyang.js"></script>
+    </head>
+    <body>
+        <script>
+            Parse.initialize('Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy', 'Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv');
+        </script>
+        <div class="container">
+            <div id="login-modal" class="hidden">
+                <div class="login-box">
+                    <form>
+                        <table>
+                            <div class="form-group">
+                            <tr>
+                                <td><label for="inputEmail">Email</label></td>
+                            <td><input type="email" class="form-controll" id="inputEmail" placeholder="Email"><td>
+                            </tr>
+                            <tr>
+                                <td><label for="inputUsername">Username</label></td>
+                            <td><input type="text" class="form-controll" id="inputUsername" placeholder="Username"><td>
+                            </tr>
+                            </div>
+                            <div class="form-group">
+                            <tr>
+                                <td><label for="inputPassword">Password</label></td>
+                                <td><input type="password" class="form-controll" id="inputPassword" placeholder="Password"></td>
+                            </tr>
+                            </div>
+                        </table>
+                        <!-- <div class="checkbox">
+                            <label><input type="checkbox"> Remember me</label>
+                        </div> -->
+                        <input id="submitLogin" type="submit" class="btn btn-default">Login/Create New Account</input>
+                    </form>
+                </div>
+            </div>
+
+            <nav style="z-index:0" id="navigation" class="navbar navbar-default navbar-inverse" role="navigation">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-header"  id="navElems">
+                        <!-- <li id="navigationText"><a><span class="queryPrefix"></span>
+                        </a></li>
+ -->                    
+                    </ul>
+                    <a id="login-button" style="cursor:pointer" class="btn btn-default navbar-btn pull-right">login</a>
+                </div>
+            </nav>
+            <div style="z-index:98" class="searchbox">
+                <!-- <div id="searchPrefix">search results for: </div> -->
+                <!-- <div class="logo">airie</div> -->
+                <input id="searchinput" type="text" placeholder="type anything"></input>
+            </div>
+            
+            <div id="resultContainer">
+                
+            </div>
+
+        </div>
+        <script src="ebayAPIHandler.js"></script>
+        <script type="text/template" id="result_item">
+            <div class="itemCont">
+                <img src=<%=imageURL%>/>
+                <p><%=desc%></p>
+            </div>
+        </script>
+
+        <script src="js/frontend_backbone.js"></script>
+    </body>
+</html>
