@@ -20,6 +20,7 @@ var Results = Backbone.Collection.extend({
 });
 
 var Result_View = Backbone.View.extend({
+    className: "resultCollection",
     makeRow: function() {
         return $(document.createElement('div')).addClass('row');
     },
@@ -36,14 +37,14 @@ var Result_View = Backbone.View.extend({
                 console.log(elementsWrapper);
             }
         }.bind(this), 100);
-        this.$el.html(elementsWrapper);
+        this.$el = elementsWrapper;
         return this;
     }
 });
 
 var Result_Item_View = Backbone.View.extend({
     tagName: "div",
-    className: "result_item",
+    className: "result_item panel panel-default",
     initialize: function() {
         this.template = _.template($('#result_item').html());
         /*$('#result_item').css({'display': 'inline-block'});*/

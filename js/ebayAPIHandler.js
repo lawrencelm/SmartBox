@@ -5,6 +5,10 @@ var proxy = "http://jsonp.guffa.com/Proxy.ashx?url=pubapi.cryptsy.com%2fapi.php%
 console.log("hello");
 var urlhalf1 = "http://open.api.ebay.com/*/
 
+var requestEbay= function(keywordString) {
+
+keywordString = keywordString.split(' ').join('%20');
+
 var url = "http://svcs.ebay.com/services/search/FindingService/v1";
     url += "?OPERATION-NAME=findItemsByKeywords";
     url += "&SERVICE-VERSION=1.0.0";
@@ -13,18 +17,19 @@ var url = "http://svcs.ebay.com/services/search/FindingService/v1";
     url += "&RESPONSE-DATA-FORMAT=JSON";
     url += "&callback=cb_log";
     url += "&REST-PAYLOAD";
-    url += "&keywords=harry%20potter";
+    url += "&keywords=" + keywordString;
     url += "&paginationInput.entriesPerPage=3";
 
 
 var cb_log = function(data){
-	console.log(data);
+	return data;
 }
 
 s=document.createElement('script');
 s.src = url;
 document.body.appendChild(s);
 
+}
 
 
 /*var HttpClient = function (){

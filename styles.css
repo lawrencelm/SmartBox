@@ -192,13 +192,18 @@ input {
     padding:10px;
 }
 
+.resultCollection {
+    left: 0;
+    position:absolute;
+}
+
 #resultContainer {
     margin: 0 20px;
 }
 
 .itemCont img {
-    height:250px;
-    width:250px;
+    height:70%;
+    width:70%;
     left:50%;
     margin-top:20px;
 }
