@@ -5,7 +5,7 @@ var proxy = "http://jsonp.guffa.com/Proxy.ashx?url=pubapi.cryptsy.com%2fapi.php%
 console.log("hello");
 var urlhalf1 = "http://open.api.ebay.com/*/
 
-var requestEbay= function(keywordString) {
+var requestEbay= function(keywordString, callback) { //callback takes response object as parm
 
 keywordString = keywordString.split(' ').join('%20');
 
@@ -22,7 +22,7 @@ var url = "http://svcs.ebay.com/services/search/FindingService/v1";
 
 
 var cb_log = function(data){
-	return data;
+	callback(data);
 }
 
 s=document.createElement('script');
