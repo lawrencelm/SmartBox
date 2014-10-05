@@ -168,7 +168,7 @@ body {
 }
 
 .searchbox.submitted {
-    margin-top: -90px;
+    margin-top: -4px;
     transition:.3s;
 }
 .searchLanding.submitted {
