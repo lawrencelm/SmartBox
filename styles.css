@@ -27,7 +27,8 @@ body {
     text-align: center;
     color:#8a68e0;
     margin-top: 8px;
-    position: absolute;
+    position: relative;
+    margin:0 auto;
     z-index:-5;
     left:50%;
     top:-250px;
