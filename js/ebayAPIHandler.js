@@ -5,30 +5,50 @@ var proxy = "http://jsonp.guffa.com/Proxy.ashx?url=pubapi.cryptsy.com%2fapi.php%
 console.log("hello");
 var urlhalf1 = "http://open.api.ebay.com/*/
 
-var requestEbay= function(keywordString, callback) { //callback takes response object as parm
-
-keywordString = keywordString.split(' ').join('%20');
-
-var url = "http://svcs.ebay.com/services/search/FindingService/v1";
-    url += "?OPERATION-NAME=findItemsByKeywords";
-    url += "&SERVICE-VERSION=1.0.0";
-    url += "&SECURITY-APPNAME=DucNguye-db45-4205-adda-a7cf5ef17a5e";
-    url += "&GLOBAL-ID=EBAY-US";
-    url += "&RESPONSE-DATA-FORMAT=JSON";
-    url += "&callback=cb_log";
-    url += "&REST-PAYLOAD";
-    url += "&keywords=" + keywordString;
-    url += "&paginationInput.entriesPerPage=3";
-
+var wrapper;
 
 var cb_log = function(data){
-	callback(data);
+    var items = data.findItemsByKeywordsResponse[0].searchResult[0].item || [];
+    var searchresults = [];
+    console.log('data');
+    for (var i = 0; i < items.length; ++i) {
+        var item     = items[i];
+        //console.log(item);
+        if (item&&item.sellingStatus[0].currentPrice[0]['__value__']&&item.title&&item.galleryPlusPictureURL){
+            var price    = item.sellingStatus[0].currentPrice[0]['__value__'];
+            var title    = item.title;
+            var pic      = item.galleryPlusPictureURL;
+            var URL      = item.viewItemURL;
+            //console.log(price);
+            //console.log(pic);
+            //console.log(title);
+            console.log(pic);
+            searchresults[i]={"title":title, "price":price, "pic":pic, "URL":URL};
+        }
+    }
+    var apiData = {"APItype":"EBAY", "list":searchresults};
+    wrapper(apiData);
 }
 
-s=document.createElement('script');
-s.src = url;
-document.body.appendChild(s);
+var requestEbay = function(keywordString, callback) { //callback takes response object as parm
+    keywordString = keywordString.split(' ').join('%20');
 
+    wrapper = callback;
+
+	var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+	    url += "?OPERATION-NAME=findItemsByKeywords";
+	    url += "&SERVICE-VERSION=1.0.0";
+	    url += "&SECURITY-APPNAME=DucNguye-db45-4205-adda-a7cf5ef17a5e";
+	    url += "&GLOBAL-ID=EBAY-US";
+	    url += "&RESPONSE-DATA-FORMAT=JSON";
+	    url += "&callback=cb_log";
+	    url += "&REST-PAYLOAD";
+	    url += "&keywords=" + keywordString;
+	    url += "&paginationInput.entriesPerPage=10";
+
+    var s = document.createElement('script');
+    s.src = url;
+    document.body.appendChild(s);
 }
 
 
