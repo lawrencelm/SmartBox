@@ -90,18 +90,6 @@ $(document).ready(function() {
                 /*$('#searchPrefix').css({'display': 'inline-block'});*/
                 $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
                     function() {
-                        /*var samples = new Results([
-                            {imageURL: 'http://puu.sh/bZ5I1/c798733d64.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5JO/1c94e84275.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5JO/1c94e84275.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5LD/6ad8c10d74.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5MA/75169540e1.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5I1/c798733d64.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5JO/1c94e84275.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5JO/1c94e84275.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5LD/6ad8c10d74.png', desc: 'this is a test one'},
-                            {imageURL: 'http://puu.sh/bZ5MA/75169540e1.png', desc: 'this is a test one'}
-                        ]);*/
                         var content = new Results(response);
                     });
             }
