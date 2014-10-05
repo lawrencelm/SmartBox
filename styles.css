@@ -336,6 +336,8 @@ input {
 
 /*BACKBONE FORMATTING*/
 
+/*Grid and itemized stuff*/
+
 .result_item {
     position:relative;
     display: inline-block;
@@ -349,7 +351,7 @@ input {
     padding:10px;
 }
 
-.resultCollection {
+/*.resultCollection {
     left: 0;
     position:absolute;
     z-index:-1;
@@ -358,7 +360,7 @@ input {
 .resultCollection.moved {
     left:-100%;
     transition: 0.5s;
-}
+}*/
 
 .submitLogin{
     margin-top:30px;
@@ -388,5 +390,38 @@ input {
 
 .itemCont p {
     margin-top:10px;
+}
 
+/*Spotify element*/
+
+/*#spotifyelement {
+    margin: 0 auto;
+    left: 0;
+    position:absolute;
+    z-index: -1;
+}
+
+#spotifyelement.moved {
+    left:-100%;
+    transition: 0.5s;
+}*/
+
+#songContainer img {
+    height:500px;
+    width:450px;
+}
+
+/*Universal Backbone containers that slide out, yet are named different*/
+
+.resultCollection, #spotifyelement {
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    position:absolute;
+    z-index: -1;
+}
+
+.resultCollection.moved, #spotifyelement.moved {
+    left: -100%;
+    transition: 0.5s;
 }

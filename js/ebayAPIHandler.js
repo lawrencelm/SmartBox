@@ -19,7 +19,7 @@ var cb_log = function(data){
         }
     }
     var apiData = {"APItype":"EBAY", "list":searchresults};
-    console.log("APIDATA:" + apiData);
+    console.log(apiData);
     wrapper(apiData);
 }
 

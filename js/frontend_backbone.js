@@ -28,9 +28,6 @@ var Results = Backbone.Collection.extend({
     }
 });
 
-$(document).ready(function() {
-
-});
 
 var Result_View = Backbone.View.extend({
     initialize: function() {
@@ -80,42 +77,92 @@ var Result_Item_View = Backbone.View.extend({
     }
 });
 
+var Spotify_Item = Backbone.Model.extend({
+    initialize: function() {
+        setTimeout(function() {
+        var view = new Spotify_View({model: this});
+        var element = view.render().$el;
+        $('#resultContainer').append(element);
+        }.bind(this), 100);
+    }
+});
+
+var Spotify_View = Backbone.View.extend({
+    tagName: "div",
+    id: "spotifyElement",
+    initialize: function() {
+        this.template = _.template($('#spotifyElement').html());
+    },
+    render: function() {
+        this.$el.html(this.template(this.model.attributes));
+        return this;
+    }
+});
+
 //END BACKBONE//
 
 
-
 //pure jQuery part: SEARCH///
-var margin_searchAtTop;
+var searchMoved = false;
 $(document).ready(function() {
+    var submitState = function() {
+        $('.searchLanding, #navigation, .searchbox').addClass('submitted');
+    }
+
+    annyangThread(function(response) {
+
+    });
+
     $('body').keypress(function(e) {
         if (e.keyCode === 13) {
             var response;
             var query = $('#searchinput').val();
 
             if (query.substring(0,"buy".length)==="buy") {
-                console.log('yo');
                 query = query.substring("buy".length + 1);
+                submitState();
                 requestEbay(query, function(data) {
-                    console.log(data);
                     response = data;
-                    generate(response.list);
+                    generate(response);
                 });
             }
         }
 
         function generate(response) {
             /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
-            $('.searchLanding, #navigation, .searchbox').addClass('submitted');
             /*$('#searchPrefix').css({'display': 'inline-block'});*/
-            $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
-                function() {
-                    var content = new Results(response);
-                    margin_searchAtTop = $(this).css('margin-top');
-                });
 
-            if ($('.searchbox').css('margin-top') === margin_searchAtTop)
-                var content = new Results(response);
+            //currently not useful.
+            var determineSearchMoved = function() {
+                if ($('.searchbox').css('margin-top') === margin_searchAtTop)
+                    searchMoved = true;
+            }
 
+            var content;
+
+            var determineAPIView = function() {
+                switch(response.APItype) {
+                    case "EBAY":
+                        console.log(response.list);
+                        content = new Results(response.list);
+                        margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
+
+                        break;
+                    case "SPOTIFY":
+                        content = new Spotify_Item(response.meta);
+                        break;    
+                }
+            }
+
+            determineAPIView();
+            /*if(!searchMoved) {
+                $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
+                    function() {
+                        console.log('reached end of transition already');
+                        determineAPIView();}
+                );
+            }
+            else determineAPIView();*/
 
 
         }
