@@ -2,7 +2,7 @@
 
 var express = require("express");
 var SerialPort = require("serialport").SerialPort
-var serialPort = new SerialPort("/dev/tty.usbmodem1421", {baudrate: 9600, parser: require("serialport").parsers.readline('\n')}, false);
+var serialPort = new SerialPort("/dev/tty.usbmodemfd121", {baudrate: 9600, parser: require("serialport").parsers.readline('\n')}, false);
 
 var concentration = false;
 
@@ -26,8 +26,17 @@ serialPort.open(function (error)
 
 var app = express();
 
+app.use("/", express.static("/Users/joshuapham/Documents/Web/universe"));
+
 app.get("/", function(req, res){
-        res.sendfile("./index.html");
+	if(concentration)
+	{
+        res.sendfile("./index_concentration.html");
+    }
+    else
+    {
+    	res.sendfile("./index.html");
+    }
 });
 
 app.listen(8000);
