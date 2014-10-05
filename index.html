@@ -10,7 +10,7 @@
         <script src="annyang/annyang.js"></script>
         <!--<script src="js/annyang.js"></script>-->
     </head>
-    <body>
+    <body onload="document.getElementById('searchinput').focus();">
         <script>
             Parse.initialize('Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy', 'Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv');
         </script>
@@ -57,8 +57,8 @@
                 </div>
             </nav>
             <div style="z-index:98" class="searchbox">
-                <div><img src="images/big_logo.png" class="logo"></img></div>
-                <input id="searchinput" type="text" placeholder="what do you need?"></input>
+                <div><h1 class="logo"><span style="color:#8a68e0; font-weight: 300">smart</span>box</h1></div>
+                <input id="searchinput" type="text" placeholder="type something"></input>
             </div>
             
             <div id="resultContainer">
