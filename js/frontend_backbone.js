@@ -83,10 +83,11 @@ $(document).ready(function() {
             var query = $('#searchinput').val();
             if ("buy".split() in query.split()) {
                 query = query.substring("buy".length + 1);
-                requestEbay($('#searchinput').val(), function(data) {
+                /*requestEbay($('#searchinput').val(), function(data) {
                     response = data;
                     generate(response.list);
-                });
+                });*/
+                
             }
 
             function generate(response) {
