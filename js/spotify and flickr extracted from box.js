@@ -72,6 +72,15 @@ if(win){
         req.send(null);
     }
 
+    var feelMood = function(){
+        if(concentrated) {
+            console.log('it is concentrated');
+        } 
+        if(!concentrated) {
+            console.log('NOT concentrated');
+        }
+    }
+
     function stop() {
         if (audio) {
             audio.pause();
