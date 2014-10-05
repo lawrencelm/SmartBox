@@ -5,11 +5,11 @@ var cb_log = function(data){
     var searchresults = [];
     for (var i = 0; i < items.length; ++i) {
         var item     = items[i];
-        console.log(i);
+        /*console.log(i);
         console.log(item);
         console.log(item.sellingStatus[0].currentPrice[0]['__value__']);
         console.log(item.galleryPlusPictureURL || item.galleryURL);
-        console.log(item.title);
+        console.log(item.title);*/
         if (/*item.sellingStatus[0].currentPrice[0]['__value__']&&*/item.title&&(item.galleryPlusPictureURL||item.galleryURL)){
             var price    = item.sellingStatus[0].currentPrice[0]['__value__'];
             var title    = item.title;

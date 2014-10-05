@@ -57,9 +57,8 @@
                 </div>
             </nav>
             <div style="z-index:98" class="searchbox">
-                <!-- <span style="color:#8a68e0; font-weight: 300">smart</span>box</h1> -->
-                    <img src="images/big_logo.png" alt="">
-                <input id="searchinput" type="text" placeholder="type something"></input>
+                <img src="images/big_logo.png" class="logo"></img>
+                <input id="searchinput" type="text" placeholder="what do you need?"></input>
             </div>
             
             <div id="resultContainer">
@@ -67,15 +66,17 @@
             </div>
 
         </div>
-        <script src="js/ebayAPIHandler.js"></script>
-        <script type="text/template" id="result_item">
-            <a href=<%=URL||URL[0]%>><div class="itemCont">
-                <img src=<%=pic||pic[0]%>></img>
+
+        <script type="text/template" id="result_item" style="visibility:hidden">
+            <a href=<%= URL||URL[0] %>><div class="itemCont">
+                <img src=<%= pic||pic[0] %>>
             </div></a>
         </script>
         <script type="text/template" id="spotifyelement">
             
         </script>
+
+        <script src="js/ebayAPIHandler.js"></script>
 
         <script src="js/frontend_backbone.js"></script>
     </body>
