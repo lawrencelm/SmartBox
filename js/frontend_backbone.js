@@ -2,7 +2,6 @@
 
 var Result_Item = Backbone.Model.extend({
     initialize: function() {
-        //this.append();
     },
     parse: function(data) {
         this.model.set('URL', data.attributes.URL[0]);
@@ -19,13 +18,18 @@ var Results = Backbone.Collection.extend({
     },
     initialize: function() {
         var view;
+
         setTimeout(function() {
         view = new Result_View({collection:this});
-        var element = view.render().$el
+        var element = view.render().$el;
         $('#resultContainer').append(element);
         console.log(element);
-        }.bind(this), 200);
+        }.bind(this), 100);
     }
+});
+
+$(document).ready(function() {
+
 });
 
 var Result_View = Backbone.View.extend({
@@ -45,7 +49,7 @@ var Result_View = Backbone.View.extend({
         var row = this.makeRow();
         console.log(this.collection)
             for (var i = 0; i < this.collection.length; i++) {
-                console.log(this.collection.models[i].attributes.URL[0])
+                //console.log(this.collection.models[i].attributes.URL[0])
                 row.append(new Result_Item_View({model: this.collection.models[i]}).render().$el);
                 if ((i + 1) % 4 === 0) {
                     $(elementsWrapper).append($(row));
@@ -65,7 +69,7 @@ var Result_Item_View = Backbone.View.extend({
     tagName: "div",
     className: "result_item panel panel-default col-md-3",
     initialize: function() {
-        console.log('result_item_view');
+        //console.log('result_item_view');
         this.template = _.template($('#result_item').html());
         $('#result_item').css({'display': 'inline-block'});
     },
@@ -81,11 +85,13 @@ var Result_Item_View = Backbone.View.extend({
 
 
 //pure jQuery part: SEARCH///
+var margin_searchAtTop;
 $(document).ready(function() {
     $('body').keypress(function(e) {
         if (e.keyCode === 13) {
             var response;
             var query = $('#searchinput').val();
+
             if (query.substring(0,"buy".length)==="buy") {
                 console.log('yo');
                 query = query.substring("buy".length + 1);
@@ -94,7 +100,6 @@ $(document).ready(function() {
                     response = data;
                     generate(response.list);
                 });
-                
             }
         }
 
@@ -105,7 +110,12 @@ $(document).ready(function() {
             $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
                 function() {
                     var content = new Results(response);
+                    margin_searchAtTop = $(this).css('margin-top');
                 });
+
+            if ($('.searchbox').css('margin-top') === margin_searchAtTop)
+                var content = new Results(response);
+
         }
     });
 
