@@ -13,8 +13,8 @@ body {
 .nav-extra {
   border-top:white;
   border-left:white;
-  border-radius: white;
-  border-right: white;
+  border-radius:white;
+  border-right:white;
 }
 
 .logo {
@@ -25,7 +25,7 @@ body {
     position: absolute;
     z-index:-5;
     left:50%;
-    top:-230px;
+    top:-250px;
     transform: translateX(-50%);
     /*font-family: "Open Sans";*/
     /*margin-bottom: 30px;*/
