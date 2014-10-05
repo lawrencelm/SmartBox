@@ -10,6 +10,23 @@ body {
     margin-top: 8px;
 }
 
+.logo {
+    vertical-align: center;
+    text-align: center;
+    color:#8a68e0;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    /*font-family: "Open Sans";*/
+    /*margin-bottom: 30px;*/
+    /*font-size: 100px;*/
+}
+
+.semibold {
+    font-weight:600;
+    text-decoration: none;
+}
+
 .btn-extra {
     padding: 15px 40px;
     color:#fff;
@@ -82,7 +99,7 @@ body {
     width:100%;
     height:100%;
     padding: 0;
-    background-color: rgba(220, 220, 220, 0.2);
+    /*background-color: rgba(220, 220, 220, 0.2);*/
 }
 
 .searchLanding-bg {
@@ -151,7 +168,8 @@ body {
     width:100%;
     border-radius: 0px;
     height:80px;
-    border-bottom:gray 4px solid;
+    /*border-bottom:gray 4px solid;*/
+    border-bottom:white;
     background-color: white;
 }
 
@@ -198,12 +216,6 @@ input {
 .navbar-inverse {
     /*background: rgba(184, 153, 189, 0.6);*/
     background: none;
-}
-
-.logo {
-    color: white; 
-    font-family: Open Sans; 
-    margin-bottom: 15px;
 }
 
 
