@@ -43,6 +43,18 @@ var requestEbay = function(keywordString, callback) { //callback takes response 
     document.body.appendChild(s);
 }
 
+//temp
+
+/*var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+    url += "?OPERATION-NAME=findItemsByKeywords";
+    url += "&SERVICE-VERSION=1.0.0";
+    url += "&SECURITY-APPNAME=DucNguye-db45-4205-adda-a7cf5ef17a5e";
+    url += "&GLOBAL-ID=EBAY-US";
+    url += "&RESPONSE-DATA-FORMAT=JSON";
+    url += "&callback=cb_log";
+    url += "&REST-PAYLOAD";
+    url += "&keywords=" + 'sports';
+    url += "&paginationInput.entriesPerPage=50";
 
 /*var HttpClient = function (){
 	this.get = function(aurl, aCallback){

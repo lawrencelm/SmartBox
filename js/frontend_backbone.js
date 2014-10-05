@@ -32,11 +32,17 @@ var Results = Backbone.Collection.extend({
 });
 
 var Result_View = Backbone.View.extend({
-    className: "resultCollection",
+    initialize: function() {
+        $('body').keypress(function(e) {
+            if (e.keyCode === 13 && this.rendered)
+                $(this.$el).addClass('moved');
+        }.bind(this))
+    },
     makeRow: function() {
         console.log('result_view');
         return $(document.createElement('div')).addClass('row');
     },
+    rendered: false,
     render: function() {
         var elementsWrapper = document.createElement('div');
         var row = this.makeRow();
@@ -50,8 +56,10 @@ var Result_View = Backbone.View.extend({
                 }
             }
             if (!((i+1) % 4 === 0)) $(elementsWrapper).append($(row));
+            $(elementsWrapper).addClass('resultCollection');
             console.log(elementsWrapper);
             this.$el = elementsWrapper;
+        this.rendered = true;
         return this;
     }
 });
@@ -91,16 +99,16 @@ $(document).ready(function() {
                 });
                 
             }
+        }
 
-            function generate(response) {
-                /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
-                $('.searchLanding, #navigation, .searchbox').addClass('submitted');
-                /*$('#searchPrefix').css({'display': 'inline-block'});*/
-                $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
-                    function() {
-                        var content = new Results(response);
-                    });
-            }
+        function generate(response) {
+            /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
+            $('.searchLanding, #navigation, .searchbox').addClass('submitted');
+            /*$('#searchPrefix').css({'display': 'inline-block'});*/
+            $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
+                function() {
+                    var content = new Results(response);
+                });
         }
     });
 
