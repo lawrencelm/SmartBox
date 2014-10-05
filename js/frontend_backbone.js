@@ -18,13 +18,18 @@ var Results = Backbone.Collection.extend({
     },
     initialize: function() {
         var view;
+
         setTimeout(function() {
         view = new Result_View({collection:this});
         var element = view.render().$el;
         $('#resultContainer').append(element);
         console.log(element);
-        }.bind(this), 200);
+        }.bind(this), 100);
     }
+});
+
+$(document).ready(function() {
+
 });
 
 var Result_View = Backbone.View.extend({
@@ -86,6 +91,7 @@ $(document).ready(function() {
         if (e.keyCode === 13) {
             var response;
             var query = $('#searchinput').val();
+
             if (query.substring(0,"buy".length)==="buy") {
                 console.log('yo');
                 query = query.substring("buy".length + 1);
@@ -94,9 +100,9 @@ $(document).ready(function() {
                     response = data;
                     generate(response.list);
                 });
-                
             }
         }
+
         function generate(response) {
             /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
             $('.searchLanding, #navigation, .searchbox').addClass('submitted');
