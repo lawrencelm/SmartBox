@@ -1,11 +1,15 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,600);
 
 body {
     /*text-align: center;*/
 }
 
+.frame {
+    margin-top: 50px;  
+}
+
 .logo2 {
-    text-align:center;
+    text-align:0 auto;
     vertical-align:middle;
     margin-top: 8px;
 }
@@ -15,6 +19,7 @@ body {
   border-left:white;
   border-radius:white;
   border-right:white;
+  background-color:white;
 }
 
 .logo {
@@ -22,14 +27,31 @@ body {
     text-align: center;
     color:#8a68e0;
     margin-top: 8px;
-    position: absolute;
+    position: relative;
+    margin:0 auto;
     z-index:-5;
     left:50%;
     top:-250px;
-    transform: translateX(-50%);
-    /*font-family: "Open Sans";*/
-    /*margin-bottom: 30px;*/
-    /*font-size: 100px;*/
+    height: 100px; 
+    font-size: 58px;
+    font-weight: 600;
+    padding-top: 148px;
+    transform: translateX(-53%);
+    font-family: "Open Sans";
+}
+
+.logo span.sub {
+    color:#8a68e0;
+    font-weight: 500;
+}
+
+.logo span.bold {
+    color:#8a68e0;
+    font-weight: 800;
+}
+
+.logo h1 {
+    font-size:140px;
 }
 
 .semibold {
@@ -39,11 +61,11 @@ body {
 
 .btn-extra {
     padding: 10px 40px;
-    color:#fff;
-    background-color:#8a68e0;
-    margin-top: 8px;
-    margin-bottom: 8px; 
-    border: 1px solid transparent;
+    color:#8a68e0;
+    // background-color:#8a68e0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 0px solid transparent;
     border-color: #8a68e0;
     font-family:"Open Sans";
     vertical-align:middle;
@@ -136,20 +158,20 @@ body {
 /*^^^ DEPRECATED, merged with .container*/
 
 .searchbox {
-    margin-top: 21%;
+    margin-top: 15%;
     border: none;
     font-family: Helvetica;
     font-size: 40px;
     outline:none;
     position:fixed;
-    z-index:5;
+    z-index:99;
     left:50%;
     transform: translateX(-40%);
     display:block;
 }
 
 .searchbox.submitted {
-    margin-top: -90px;
+    margin-top: -230px;
     transition:.3s;
 }
 
@@ -177,6 +199,8 @@ body {
     z-index:2;
     width:100%;
     border-radius: 0px;
+    position: fixed;
+    z-index: 5;
     height:80px;
     /*border-bottom:gray 4px solid;*/
     border-bottom:white;
@@ -211,6 +235,7 @@ input {
 
 #searchInput {
     border: none;
+    position:absolute;
     height: 38px;
     font-size: 26px;
     font-family: Open Sans;
@@ -284,16 +309,33 @@ input {
     border-spacing:5px;
 }
 
+.login-button {
+    background-image: none;
+    background-color:purple;
+}
+
+.form-label {
+    margin-top:2px;
+    padding:1px;
+    margin-left:15px;
+    border-radius: 0px;
+}
+
 .form-controll {
     border:none;
     background-color: whitesmoke;
-    padding:2px;
+    padding:1px;
     margin-left:15px;
     border-radius: 0px;
 }
 
 .form-controll:focus {
     outline:none;
+}
+
+.form-title{
+    text-align: center;
+    font-size: 30;
 }
 
 /*BACKBONE FORMATTING*/
@@ -313,10 +355,21 @@ input {
 .resultCollection {
     left: 0;
     position:absolute;
+    z-index:-1;
+}
+
+.resultCollection.moved {
+    left:-100%;
+    transition: 0.5s;
+}
+
+.submitLogin{
+    margin-top:30px;
 }
 
 #resultContainer {
     margin: 0 20px;
+    margin-top: 65px;
 }
 
 .itemCont {

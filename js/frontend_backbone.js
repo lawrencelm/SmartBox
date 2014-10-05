@@ -2,7 +2,7 @@
 
 var Result_Item = Backbone.Model.extend({
     initialize: function() {
-        this.append();
+        //this.append();
     },
     parse: function(data) {
         this.model.set('URL', data.attributes.URL[0]);
@@ -10,11 +10,6 @@ var Result_Item = Backbone.Model.extend({
         this.model.set('title', data.attributes.title[0]);
         console.log(this);
         return this;
-    },
-    append: function() {
-        /*var view = new Result_View({model:this});
-
-        $('#resultContainer').append(view.render().$el);*/
     }
 });
 
@@ -26,17 +21,25 @@ var Results = Backbone.Collection.extend({
         var view;
         setTimeout(function() {
         view = new Result_View({collection:this});
-        $('#resultContainer').append(view.render().$el);
+        var element = view.render().$el
+        $('#resultContainer').append(element);
+        console.log(element);
         }.bind(this), 200);
     }
 });
 
 var Result_View = Backbone.View.extend({
-    className: "resultCollection",
+    initialize: function() {
+        $('body').keypress(function(e) {
+            if (e.keyCode === 13 && this.rendered)
+                $(this.$el).addClass('moved');
+        }.bind(this))
+    },
     makeRow: function() {
         console.log('result_view');
         return $(document.createElement('div')).addClass('row');
     },
+    rendered: false,
     render: function() {
         var elementsWrapper = document.createElement('div');
         var row = this.makeRow();
@@ -50,8 +53,10 @@ var Result_View = Backbone.View.extend({
                 }
             }
             if (!((i+1) % 4 === 0)) $(elementsWrapper).append($(row));
+            $(elementsWrapper).addClass('resultCollection');
             console.log(elementsWrapper);
             this.$el = elementsWrapper;
+        this.rendered = true;
         return this;
     }
 });
@@ -91,16 +96,16 @@ $(document).ready(function() {
                 });
                 
             }
+        }
 
-            function generate(response) {
-                /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
-                $('.searchLanding, #navigation, .searchbox').addClass('submitted');
-                /*$('#searchPrefix').css({'display': 'inline-block'});*/
-                $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
-                    function() {
-                        var content = new Results(response);
-                    });
-            }
+        function generate(response) {
+            /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
+            $('.searchLanding, #navigation, .searchbox').addClass('submitted');
+            /*$('#searchPrefix').css({'display': 'inline-block'});*/
+            $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
+                function() {
+                    var content = new Results(response);
+                });
         }
     });
 
@@ -108,7 +113,7 @@ $(document).ready(function() {
         $('#login-modal').removeClass('hidden');
     });
 
-    $(document).on("submit", "#submitLogin", function(e) {
+    $(document).on("submit", ".submitLogin", function(e) {
         e.preventDefault();
         var username = document.getElementById('inputUsername').value;     
         var password = document.getElementById('inputPassword').value;

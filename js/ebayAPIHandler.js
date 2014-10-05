@@ -6,15 +6,14 @@ var cb_log = function(data){
     for (var i = 0; i < items.length; ++i) {
         var item     = items[i];
         console.log(i);
-        console.log(item);
-        console.log(item.sellingStatus[0].currentPrice[0]['__value__']);
-        console.log(item.galleryPlusPictureURL || item.galleryURL);
-        console.log(item.title);
-        if (/*item.sellingStatus[0].currentPrice[0]['__value__']&&*/item.title&&(item.galleryPlusPictureURL||item.galleryURL)){
+        if (item.sellingStatus[0].currentPrice[0]['__value__']&&item.title&&item.galleryPlusPictureURL||item.galleryURL){
             var price    = item.sellingStatus[0].currentPrice[0]['__value__'];
             var title    = item.title;
             var pic      = item.galleryPlusPictureURL || item.galleryURL;
             var URL      = item.viewItemURL;
+            console.log(price);
+            console.log(pic);
+            console.log(title);
             searchresults.push({"title":title, "price":price, "pic":pic, "URL":URL});
         }
     }
@@ -37,13 +36,25 @@ var requestEbay = function(keywordString, callback) { //callback takes response 
 	    url += "&callback=cb_log";
 	    url += "&REST-PAYLOAD";
 	    url += "&keywords=" + keywordString;
-	    url += "&paginationInput.entriesPerPage=20";
+	    url += "&paginationInput.entriesPerPage=10";
 
     var s = document.createElement('script');
     s.src = url;
     document.body.appendChild(s);
 }
 
+//temp
+
+/*var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+    url += "?OPERATION-NAME=findItemsByKeywords";
+    url += "&SERVICE-VERSION=1.0.0";
+    url += "&SECURITY-APPNAME=DucNguye-db45-4205-adda-a7cf5ef17a5e";
+    url += "&GLOBAL-ID=EBAY-US";
+    url += "&RESPONSE-DATA-FORMAT=JSON";
+    url += "&callback=cb_log";
+    url += "&REST-PAYLOAD";
+    url += "&keywords=" + 'sports';
+    url += "&paginationInput.entriesPerPage=50";
 
 /*var HttpClient = function (){
 	this.get = function(aurl, aCallback){

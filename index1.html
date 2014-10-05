@@ -10,8 +10,8 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     </head>
-    <body>
 
+    <body>
         <div class="container">
             <div id="navigation">
             </div>
@@ -29,8 +29,8 @@
             
             </div>
 
-   <script>
-function validateForm() {
+  <script>
+    function validateForm() {
     var x=document.forms["myForm"]["q"].value;
     console.log('query string=' + x);
     if (x==null || x=="")
@@ -63,14 +63,14 @@ function validateForm() {
             return false;
         } else
             error = "Please enter an valid US/UK/Canada Postal Code or IP or (Lat,Long) query.";
-    } else {
-        updateDom(x);
-        return false;
-    }
+        } else {
+          updateDom(x);
+          return false;
+        }
 
-    document.getElementById('status').innerHTML = error;
-    return false;
-};
+        document.getElementById('status').innerHTML = error;
+        return false;
+    };
 
 function updateDom(q) {
     getLocalWeather(q, function(result) {
