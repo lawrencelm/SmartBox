@@ -80,11 +80,14 @@ $(document).ready(function() {
     $('body').keypress(function(e) {
         if (e.keyCode === 13) {
             var response;
-
-            requestEbay($('#searchinput').val(), function(data) {
-                response = data;
-                generate(response.list);
-            });
+            var query = $('#searchinput').val();
+            if ("buy".split() in query.split()) {
+                query = query.substring("buy".length + 1);
+                requestEbay($('#searchinput').val(), function(data) {
+                    response = data;
+                    generate(response.list);
+                });
+            }
 
             function generate(response) {
                 /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/

@@ -51,6 +51,22 @@ var requestEbay = function(keywordString, callback) { //callback takes response 
     document.body.appendChild(s);
 }
 
+var requestEbay2 = function(keywordString, callback) {
+    var HttpClient = function (){
+        this.get = function(aurl, aCallback){
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function(){
+                if(req.readyState==4 && req.status==200)
+                    aCallback(req.responseText);
+            }
+            req.open('GET', aurl, true);
+            req.send(null);
+        }
+    }
+
+    var request = new Http
+}
+
 
 //temp
 
