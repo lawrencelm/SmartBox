@@ -94,7 +94,6 @@ var Spotify_View = Backbone.View.extend({
         this.template = _.template($('#spotifyelement').html());
     },
     render: function() {
-        console.log(this.model.attributes);
         this.$el.html(this.template(this.model.attributes));
         return this;
     }
@@ -107,7 +106,7 @@ var Spotify_View = Backbone.View.extend({
 var searchMoved = false;
 $(document).ready(function() {
     var submitState = function() {
-        $('.searchLanding, #navigation, .searchbox, #spotifyelement').addClass('submitted');
+        $('.searchLanding, #navigation, .searchbox').addClass('submitted');
     }
 
     annyangThread(function(response) {

@@ -155,7 +155,7 @@ body {
 /*^^^ DEPRECATED, merged with .container*/
 
 .searchbox {
-    margin-top: 10%;
+    margin-top: 21%;
     border: none;
     font-family: Helvetica;
     font-size: 40px;
@@ -163,15 +163,14 @@ body {
     position:fixed;
     z-index:5;
     left:50%;
-    transform: translateX(-50%);
+    transform: translateX(-40%);
     display:block;
 }
 
 .searchbox.submitted {
-    margin-top: -230px;
+    margin-top: -90px;
     transition:.3s;
 }
-
 .searchLanding.submitted {
     /*display:none;*/
 }
