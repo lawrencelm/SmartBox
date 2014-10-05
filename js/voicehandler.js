@@ -1,4 +1,5 @@
 function annyangThread(callback){
+requestPhotos("cats");
   $.getScript("../annyang/annyang.js", function(){
 
         var tag = "kittens";
@@ -10,7 +11,7 @@ function annyangThread(callback){
              'stop (the music)': stop,
               'buy (me) *item' :buyOnEbay,
                'Bring (me) food' : bringFood,
-        //    'show me (pictures of) *term' : requestKittens,
+            'show me (pictures of) *term' : requestPhotos,
             'google *term': function(term) {
                 var win = window.open('https://www.google.com/#q='+term, '_blank');
       if(win){
@@ -32,9 +33,27 @@ function annyangThread(callback){
 
            }
 
-           function requestKittens(){
+          function requestPhotos(query){
+            var url = 'https://secure.flickr.com/services/rest/?'
+                url +='method=flickr.photos.search&'
+                url +='api_key=02970fe33b397f5ac3934bdd232d1302&'
+                url +='text=' + encodeURIComponent("cats") + '&'
+                url +='safe_search=1&'
+                url +='content_type=1&'
+                url +='sort=interestingness-desc&'
+                url +='per_page=20'
 
-           }
+            var req = new XMLHttpRequest();
+            req.open("GET", url, true);
+            req.send(null);
+            console.log(req.responseText);
+          }
+
+      
+
+
+
+
 
 
           var audio = null;
