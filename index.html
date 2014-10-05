@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <script src="app.js"></script>
+        <!--<script src="app.js"></script>-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
@@ -123,7 +123,7 @@
         <script type="text/template" id="result_item" style="visibility:hidden">
             <a href=<%= URL||URL[0] %>><div class="itemCont">
                 <img src=<%= pic||pic[0] %>>
-                
+                <h3 style="color:#8a68e0"><%= "$" + price || imgTitle%></h3>
             </div></a>
         </script>
 

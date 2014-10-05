@@ -5,7 +5,7 @@ var Result_Item = Backbone.Model.extend({
     },
     parse: function(data) {
         this.model.set('URL', data.attributes.URL[0]);
-        this.model.set('pic', data.attributes.pic[0]);
+        //this.model.set('pic', data.attributes.pic[0]);
         this.model.set('title', data.attributes.title[0]);
         console.log(this);
         return this;
@@ -78,12 +78,13 @@ var Result_Item_View = Backbone.View.extend({
         $('#result_item').css({'display': 'inline-block'});
     },
     render: function() {
+        console.log(this);
         this.$el.html(this.template(this.model.attributes));
         console.log(this);
         return this;
     }
 });
-
+ 
 var Spotify_Item = Backbone.Model.extend({
     initialize: function() {
         setTimeout(function() {
@@ -92,7 +93,7 @@ var Spotify_Item = Backbone.Model.extend({
         $('#resultContainer').append(element);
         }.bind(this), 100);
 
-        this.on({'change':this.view.update})
+        //this.on({'change':this.view.update})
     },
     move: function() {
         this.view.move();
@@ -134,7 +135,6 @@ $(document).ready(function() {
     annyangThread(function(response) {
         submitState();
         generate(response);
-        return 0;
     });
     
     function generate(response) {
@@ -152,6 +152,14 @@ $(document).ready(function() {
                         case "EBAY":
                             console.log(response.list);
                             content = new Results(response.list);
+                            margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
+                            break;
+                        case "FLICKR":
+                            $(response.photos).each(function(index, item) {
+                                item.imgURL = item.imgURL.substring(2);
+                            });
+                            console.log(response.photos);
+                            content = new Results(response.photos);
                             margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
                             break;
                         case "SPOTIFY":
