@@ -10,11 +10,10 @@ var wrapper;
 var cb_log = function(data){
     var items = data.findItemsByKeywordsResponse[0].searchResult[0].item || [];
     var searchresults = [];
-    console.log('data');
     for (var i = 0; i < items.length; ++i) {
         var item     = items[i];
         //console.log(item);
-        if (item&&item.sellingStatus[0].currentPrice[0]['__value__']&&item.title&&item.galleryPlusPictureURL){
+        if (item && item.sellingStatus[0].currentPrice[0]['__value__'] && item.title && item.galleryPlusPictureURL){
             var price    = item.sellingStatus[0].currentPrice[0]['__value__'];
             var title    = item.title;
             var pic      = item.galleryPlusPictureURL;
@@ -22,16 +21,17 @@ var cb_log = function(data){
             //console.log(price);
             //console.log(pic);
             //console.log(title);
-            console.log(pic);
-            searchresults[i]={"title":title, "price":price, "pic":pic, "URL":URL};
+            searchresults.push({"title":title, "price":price, "pic":pic, "URL":URL});
         }
     }
     var apiData = {"APItype":"EBAY", "list":searchresults};
+    console.log(searchresults);
     wrapper(apiData);
 }
 
 var requestEbay = function(keywordString, callback) { //callback takes response object as parm
     keywordString = keywordString.split(' ').join('%20');
+    console.log('search string is ' + keywordString);
 
     wrapper = callback;
 

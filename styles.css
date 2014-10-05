@@ -319,9 +319,24 @@ input {
     margin: 0 20px;
 }
 
+.itemCont {
+    position:relative;
+    overflow:hidden;
+}
+
 .itemCont img {
     height:70%;
     width:70%;
     left:50%;
     margin-top:20px;
+    opacity: 0.8;
+}
+
+.itemCont img:hover {
+    opacity:1;
+}
+
+.itemCont p {
+    margin-top:10px;
+
 }

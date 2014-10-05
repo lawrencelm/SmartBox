@@ -3,15 +3,13 @@
 var Result_Item = Backbone.Model.extend({
     initialize: function() {
         this.append();
-        console.log(this);
     },
-    parse: function(data, options) {
-        //console.log('result_item');
-        var temp;
-        temp.URL = data.attributes.URL[0]||null;
-        temp.pic = data.attributes.pic;
-        temp.title = data.attributes.title[0]||null;
-        return temp;
+    parse: function(data) {
+        this.model.set('URL', data.attributes.URL[0]);
+        this.model.set('pic', data.attributes.pic[0]);
+        this.model.set('title', data.attributes.title[0]);
+        console.log(this);
+        return this;
     },
     append: function() {
         /*var view = new Result_View({model:this});
@@ -22,10 +20,14 @@ var Result_Item = Backbone.Model.extend({
 
 var Results = Backbone.Collection.extend({
     model: Result_Item,
+    parse: function() {
+    },
     initialize: function() {
-        //console.log('results');
-        var view = new Result_View({collection:this});
+        var view;
+        setTimeout(function() {
+        view = new Result_View({collection:this});
         $('#resultContainer').append(view.render().$el);
+        }.bind(this), 200);
     }
 });
 
@@ -39,32 +41,31 @@ var Result_View = Backbone.View.extend({
         var elementsWrapper = document.createElement('div');
         var row = this.makeRow();
         console.log(this.collection)
-        setTimeout(function() {
             for (var i = 0; i < this.collection.length; i++) {
+                console.log(this.collection.models[i].attributes.URL[0])
                 row.append(new Result_Item_View({model: this.collection.models[i]}).render().$el);
                 if ((i + 1) % 4 === 0) {
                     $(elementsWrapper).append($(row));
                     row = this.makeRow();
                 }
-                console.log(elementsWrapper);
             }
-        }.bind(this), 200);
-        this.$el = elementsWrapper;
+            console.log(elementsWrapper);
+            this.$el = elementsWrapper;
         return this;
     }
 });
 
 var Result_Item_View = Backbone.View.extend({
     tagName: "div",
-    className: "result_item panel panel-default",
+    className: "result_item panel panel-default col-md-3",
     initialize: function() {
         //console.log('result_item_view')
         this.template = _.template($('#result_item').html());
         /*$('#result_item').css({'display': 'inline-block'});*/
     },
     render: function() {
-        console.log(this);
         this.$el.html(this.template(this.model.attributes));
+        console.log(this);
         return this;
     }
 });
