@@ -8,21 +8,44 @@
         <link rel="stylesheet" href="styles.css">
         <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
         <script src="annyang/annyang.js"></script>
-
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/freebase/suggest/4_2/suggest.min.css" />
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/freebase/suggest/4_2/suggest.min.css">
         <script type="text/javascript" src="https://www.gstatic.com/freebase/suggest/4_2/suggest.min.js"></script>
-<script type="text/javascript">
-/*$(function() {
-  $("#searchinput").suggest({"key" : "AIzaSyCmabXvjmNjN6uKrj4OySb_m4X3n2koJC8", "width" : "500", "height" : "150"});
-});
-*/</script>
 
+<script type="text/javascript"> //food
+  (function(){
+    var ow = document.createElement('script'); 
+    ow.type = 'text/javascript'; ow.async = true; ow.src = '//menus.ordr.in/js/widget.js';
+    var s = document.getElementsByTagName('script')[0]; 
+    s.parentNode.insertBefore(ow, s);
+  })();
+</script>
+
+<script type="text/javascript">
+  window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+  };
+</script>
+
+<script id="theforbiddenone" type="text/javascript">
+    $(function() {
+        $("#searchinput").suggest({"key" : "AIzaSyCmabXvjmNjN6uKrj4OySb_m4X3n2koJC8"});
+    });
+</script>
 
     </head>
     <body onload="document.getElementById('searchinput').focus();">
         <script>
             Parse.initialize('Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy', 'Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv');
         </script>
+        <script type="text/javascript" src="js/voicehandler.js"></script>
+
+        <div class="ordrin-embed hidden" id="food" data-target="web" data-servers="test" data-pubKey="tkcAgJaKppAp_JYMEHXi6TOyrP19bFsJXdI6kyt7fOE" data-addr=getCurrentPosition() data-city="Lincoln" data-state="ME" data-zip="04457"> </div>
+
+
         <div class="container">
             <div id="login-modal" class="hidden">
                 <div class="login-box">
@@ -57,6 +80,15 @@
                 </div>
             </div>
 
+                    <div id="result" aria-live="polite">
+
+            <p id="recognized"></p>
+                    <div id="matched"></div>
+            
+            </div>
+
+
+
             <nav style="z-index:0" id="navigation" class="nav-extra navbar navbar-default navbar-inverse" role="navigation">
                 <div class="collapse navbar-collapse">
                     <!-- <ul class="nav navbar-header"  id="navElems"> -->
@@ -70,8 +102,9 @@
                 </div>
             </nav>
             <div style="z-index:98" class="searchbox">
-                <img src="images/big_logo.png" class="logo"></img>
-                <input id="searchinput" type="text" placeholder="what do you need?"></input>
+                <!-- <span style="color:#8a68e0; font-weight: 300">smart</span>box</h1> -->
+                <img src="images/big_logo.png" alt="">
+                <input id="searchinput" type="text" placeholder="What can we do for you?" ></input>
             </div>
             
             <div id="resultContainer">
@@ -85,6 +118,7 @@
                 <img src=<%= pic||pic[0] %>>
             </div></a>
         </script>
+
         <script type="text/template" id="spotifyelement">
             <div id="songContainer" class="panel panel-default">
               <div class="panel-heading"><%= title %></div>
@@ -95,7 +129,17 @@
         </script>
 
         <script src="js/ebayAPIHandler.js"></script>
-        <script src="js/spotifyAPIHandler.js"></script>
         <script src="js/frontend_backbone.js"></script>
+        <script type="text/javascript">
+        $( "#searchinput" ).keypress(function() {
+            console.log(document.getElementById('searchinput').value)
+            if (document.getElementById('searchinput').value.substring(0,"buy".length)==="buy"){
+                console.log('yea')
+                throw { name: 'FatalError', message: 'Something went badly wrong' };
+
+
+                            }
+        });
+        </script>
     </body>
 </html>

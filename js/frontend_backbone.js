@@ -146,7 +146,6 @@ $(document).ready(function() {
                         console.log(response.list);
                         content = new Results(response.list);
                         margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
-
                         break;
                     case "SPOTIFY":
                         content = new Spotify_Item(response.meta);
@@ -163,8 +162,6 @@ $(document).ready(function() {
                 );
             }
             else determineAPIView();*/
-
-
         }
     });
 
