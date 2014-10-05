@@ -34,7 +34,7 @@ var Results = Backbone.Collection.extend({
 var Result_View = Backbone.View.extend({
     className: "resultCollection",
     makeRow: function() {
-        //console.log('result_view');
+        console.log('result_view');
         return $(document.createElement('div')).addClass('row');
     },
     render: function() {
@@ -49,6 +49,7 @@ var Result_View = Backbone.View.extend({
                     row = this.makeRow();
                 }
             }
+            if (!((i+1) % 4 === 0)) $(elementsWrapper).append($(row));
             console.log(elementsWrapper);
             this.$el = elementsWrapper;
         return this;
@@ -59,7 +60,7 @@ var Result_Item_View = Backbone.View.extend({
     tagName: "div",
     className: "result_item panel panel-default col-md-3",
     initialize: function() {
-        //console.log('result_item_view')
+        console.log('result_item_view');
         this.template = _.template($('#result_item').html());
         /*$('#result_item').css({'display': 'inline-block'});*/
     },

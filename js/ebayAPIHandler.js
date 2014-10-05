@@ -30,7 +30,7 @@ var cb_log = function(data){
 }
 
 var requestEbay = function(keywordString, callback) { //callback takes response object as parm
-    keywordString = keywordString.split(' ').join('%20');
+    keywordString = keywordString.split(' ').join('%20') || "";
     console.log('search string is ' + keywordString);
 
     wrapper = callback;
@@ -44,7 +44,7 @@ var requestEbay = function(keywordString, callback) { //callback takes response 
 	    url += "&callback=cb_log";
 	    url += "&REST-PAYLOAD";
 	    url += "&keywords=" + keywordString;
-	    url += "&paginationInput.entriesPerPage=10";
+	    url += "&paginationInput.entriesPerPage=30";
 
     var s = document.createElement('script');
     s.src = url;
@@ -52,6 +52,26 @@ var requestEbay = function(keywordString, callback) { //callback takes response 
 }
 
 
+//temp
+
+/*var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+    url += "?OPERATION-NAME=findItemsByKeywords";
+    url += "&SERVICE-VERSION=1.0.0";
+    url += "&SECURITY-APPNAME=DucNguye-db45-4205-adda-a7cf5ef17a5e";
+    url += "&GLOBAL-ID=EBAY-US";
+    url += "&RESPONSE-DATA-FORMAT=JSON";
+    url += "&callback=cb_log";
+    url += "&REST-PAYLOAD";
+    url += "&keywords=" + 'sports';
+    url += "&paginationInput.entriesPerPage=50";
+
+
+$(document).ready(function() {
+    var s = document.createElement('script');
+    s.src = url;
+    document.body.appendChild(s);
+});
+*/
 /*var HttpClient = function (){
 	this.get = function(aurl, aCallback){
 		var req = new XMLHttpRequest();
