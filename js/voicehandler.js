@@ -39,8 +39,6 @@ function annyangThread(callback){
 
           var audio = null;
           function playSong(song, artist) {
-              var recognizedElement = document.getElementById('recognized');
-              recognizedElement.innerText = 'Recognized "' + song + (artist ? ' by ' + artist : '') + '"';
               console.log("PlaySong", song);
               var req = new XMLHttpRequest();
               req.open('GET', 'https://api.spotify.com/v1/search?type=track&q=' + encodeURIComponent(song), true);
@@ -60,6 +58,7 @@ function annyangThread(callback){
                               console.log(song);
                               var apistructure = {"APItype":"SPOTIFY",
                                                   "meta": {"imgURL":imgURL, "song":song, "artistName":artistName}};
+                              console.log(apistructure);
                               audio = new Audio(data.tracks.items[0].preview_url);
                               callback(apistructure);
                               audio.play();

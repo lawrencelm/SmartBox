@@ -20,11 +20,14 @@ var Results = Backbone.Collection.extend({
         var view;
 
         setTimeout(function() {
-        view = new Result_View({collection:this});
-        var element = view.render().$el;
+        this.view = new Result_View({collection:this});
+        var element = this.view.render().$el;
         $('#resultContainer').append(element);
         console.log(element);
         }.bind(this), 100);
+    },
+    move: function() {
+        this.view.move();
     }
 });
 
@@ -34,7 +37,11 @@ var Result_View = Backbone.View.extend({
         $('body').keypress(function(e) {
             if (e.keyCode === 13 && this.rendered)
                 $(this.$el).addClass('moved');
-        }.bind(this))
+        }.bind(this));
+    },
+    move: function() {
+        if (this.rendered)
+                $(this.$el).addClass('moved');
     },
     makeRow: function() {
         console.log('result_view');
@@ -80,10 +87,20 @@ var Result_Item_View = Backbone.View.extend({
 var Spotify_Item = Backbone.Model.extend({
     initialize: function() {
         setTimeout(function() {
-        var view = new Spotify_View({model: this});
-        var element = view.render().$el;
+        this.view = new Spotify_View({model: this});
+        var element = this.view.render().$el;
         $('#resultContainer').append(element);
         }.bind(this), 100);
+
+        this.on({'change':this.view.update})
+    },
+    move: function() {
+        this.view.move();
+    },
+    modify: function(meta) {
+        this.set({'imgURL':meta.imgURL});
+        this.set({'song':meta.song});
+        this.set({'artistName':meta.artistName});
     }
 });
 
@@ -96,6 +113,9 @@ var Spotify_View = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template(this.model.attributes));
         return this;
+    },
+    move: function() {
+        $(this.$el).addClass('moved');
     }
 });
 
@@ -109,9 +129,12 @@ $(document).ready(function() {
         $('.searchLanding, #navigation, .searchbox').addClass('submitted');
     }
 
+    var content;
+
     annyangThread(function(response) {
         submitState();
         generate(response);
+        return 0;
     });
     
     function generate(response) {
@@ -124,8 +147,6 @@ $(document).ready(function() {
                         searchMoved = true;
                 }
 
-                var content;
-
                 var determineAPIView = function() {
                     switch(response.APItype) {
                         case "EBAY":
@@ -136,10 +157,11 @@ $(document).ready(function() {
                         case "SPOTIFY":
                             console.log(response.meta);
                             content = new Spotify_Item(response.meta);
-                            break;    
+                            content.modify(response.meta);
+                            break;
                     }
                 }
-
+                if (content) content.move();
                 determineAPIView();
                 /*if(!searchMoved) {
                     $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
