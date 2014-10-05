@@ -1,8 +1,5 @@
 function annyangThread(callback){
-requestPhotos("cats");
   $.getScript("../annyang/annyang.js", function(){
-
-        var tag = "kittens";
 
         // Let's define our first command. First the text we expect, and then the function it should call
         var commands = {
@@ -24,37 +21,48 @@ requestPhotos("cats");
         }
 
         };
-           function buyOnEbay(){
-
-           }
+          function buyOnEbay(item){
+            requestEbay(item,function(data){
+              console.log(data)
+            });
+          }
 
            function bringFood(){
            document.getElementById('food').className="ordrin-embed";
 
            }
 
-          function requestPhotos(query){
-            var url = 'https://secure.flickr.com/services/rest/?'
-                url +='method=flickr.photos.search&'
-                url +='api_key=02970fe33b397f5ac3934bdd232d1302&'
-                url +='text=' + encodeURIComponent("cats") + '&'
-                url +='safe_search=1&'
-                url +='content_type=1&'
-                url +='sort=interestingness-desc&'
-                url +='per_page=20'
+          function requestPhotos(term){
+            var url = 'https://secure.flickr.com/services/rest/?';
+                url +='method=flickr.photos.search&';
+                url +='api_key=02970fe33b397f5ac3934bdd232d1302&';
+                url +='text=' + encodeURIComponent(term) + '&';
+                url +='safe_search=1&';
+                url +='content_type=1&';
+                url +='sort=interestingness-desc&';
+                url +='per_page=20';
 
-            var req = new XMLHttpRequest();
-            req.open("GET", url, true);
-            req.send(null);
+            var req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
             console.log(req.responseText);
-          }
 
-      
-
-
-
-
-
+            var kittens = req.responseXML.querySelectorAll('photo');
+            //console.log(kittens);
+            var photos = []
+            for (var i = 0; i < kittens.length; i++) {
+              var photo = kittens[i];
+              imgURL = photo.getAttribute("farm")+".static.flickr.com/" + photo.getAttribute("server") +
+              "/" + photo.getAttribute("id") +
+              "_" + photo.getAttribute("secret") +
+              "_s.jpg";
+              imgTitle=photo.getAttribute('title');
+              photos.push({"imgURL":imgURL, "imgTitle":imgTitle})
+            }
+            apistructure={"APItype":"FLICKR", "photos":photos}
+            console.log(apistructure);
+            callback(apistructure);
+          }
 
           var audio = null;
           function playSong(song, artist) {
