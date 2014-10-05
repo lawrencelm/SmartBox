@@ -6,14 +6,15 @@ var cb_log = function(data){
     for (var i = 0; i < items.length; ++i) {
         var item     = items[i];
         console.log(i);
-        if (item.sellingStatus[0].currentPrice[0]['__value__']&&item.title&&item.galleryPlusPictureURL){
+        console.log(item);
+        console.log(item.sellingStatus[0].currentPrice[0]['__value__']);
+        console.log(item.galleryPlusPictureURL || item.galleryURL);
+        console.log(item.title);
+        if (/*item.sellingStatus[0].currentPrice[0]['__value__']&&*/item.title&&(item.galleryPlusPictureURL||item.galleryURL)){
             var price    = item.sellingStatus[0].currentPrice[0]['__value__'];
             var title    = item.title;
-            var pic      = item.galleryPlusPictureURL;
+            var pic      = item.galleryPlusPictureURL || item.galleryURL;
             var URL      = item.viewItemURL;
-            console.log(price);
-            console.log(pic);
-            console.log(title);
             searchresults.push({"title":title, "price":price, "pic":pic, "URL":URL});
         }
     }
@@ -36,7 +37,7 @@ var requestEbay = function(keywordString, callback) { //callback takes response 
 	    url += "&callback=cb_log";
 	    url += "&REST-PAYLOAD";
 	    url += "&keywords=" + keywordString;
-	    url += "&paginationInput.entriesPerPage=10";
+	    url += "&paginationInput.entriesPerPage=20";
 
     var s = document.createElement('script');
     s.src = url;
