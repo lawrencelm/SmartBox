@@ -10,6 +10,13 @@ body {
     margin-top: 8px;
 }
 
+.nav-extra {
+  border-top:white;
+  border-left:white;
+  border-radius: white;
+  border-right: white;
+}
+
 .logo {
     vertical-align: center;
     text-align: center;
@@ -18,7 +25,7 @@ body {
     position: absolute;
     z-index:-5;
     left:50%;
-    top:-220px;
+    top:-230px;
     transform: translateX(-50%);
     /*font-family: "Open Sans";*/
     /*margin-bottom: 30px;*/
@@ -31,10 +38,10 @@ body {
 }
 
 .btn-extra {
-    padding: 15px 40px;
+    padding: 10px 40px;
     color:#fff;
     background-color:#8a68e0;
-    margin-top: 0px;
+    margin-top: 8px;
     margin-bottom: 8px; 
     border: 1px solid transparent;
     border-color: #8a68e0;
