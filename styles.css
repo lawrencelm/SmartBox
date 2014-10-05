@@ -25,7 +25,7 @@ body {
     position: absolute;
     z-index:-5;
     left:50%;
-    top:-220px;
+    top:-230px;
     transform: translateX(-50%);
     /*font-family: "Open Sans";*/
     /*margin-bottom: 30px;*/
