@@ -309,16 +309,33 @@ input {
     border-spacing:5px;
 }
 
+.login-button {
+    background-image: none;
+    background-color:purple;
+}
+
+.form-label {
+    margin-top:2px;
+    padding:1px;
+    margin-left:15px;
+    border-radius: 0px;
+}
+
 .form-controll {
     border:none;
     background-color: whitesmoke;
-    padding:2px;
+    padding:1px;
     margin-left:15px;
     border-radius: 0px;
 }
 
 .form-controll:focus {
     outline:none;
+}
+
+.form-title{
+    text-align: center;
+    font-size: 30;
 }
 
 /*BACKBONE FORMATTING*/
@@ -344,6 +361,10 @@ input {
 .resultCollection.moved {
     left:-100%;
     transition: 0.5s;
+}
+
+.submitLogin{
+    margin-top:30px;
 }
 
 #resultContainer {

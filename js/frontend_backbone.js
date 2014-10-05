@@ -113,7 +113,7 @@ $(document).ready(function() {
         $('#login-modal').removeClass('hidden');
     });
 
-    $(document).on("submit", "#submitLogin", function(e) {
+    $(document).on("submit", ".submitLogin", function(e) {
         e.preventDefault();
         var username = document.getElementById('inputUsername').value;     
         var password = document.getElementById('inputPassword').value;
