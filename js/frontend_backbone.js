@@ -62,7 +62,7 @@ var Result_Item_View = Backbone.View.extend({
     initialize: function() {
         console.log('result_item_view');
         this.template = _.template($('#result_item').html());
-        /*$('#result_item').css({'display': 'inline-block'});*/
+        $('#result_item').css({'display': 'inline-block'});
     },
     render: function() {
         this.$el.html(this.template(this.model.attributes));
@@ -81,12 +81,14 @@ $(document).ready(function() {
         if (e.keyCode === 13) {
             var response;
             var query = $('#searchinput').val();
-            if ("buy".split() in query.split()) {
+            if (query.substring(0,"buy".length)==="buy") {
+                console.log('yo');
                 query = query.substring("buy".length + 1);
-                /*requestEbay($('#searchinput').val(), function(data) {
+                requestEbay(query, function(data) {
+                    console.log(data);
                     response = data;
                     generate(response.list);
-                });*/
+                });
                 
             }
 
