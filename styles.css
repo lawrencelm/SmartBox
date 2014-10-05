@@ -15,8 +15,11 @@ body {
     text-align: center;
     color:#8a68e0;
     margin-top: 8px;
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+    z-index:-5;
+    left:50%;
+    top:-220px;
+    transform: translateX(-50%);
     /*font-family: "Open Sans";*/
     /*margin-bottom: 30px;*/
     /*font-size: 100px;*/
@@ -31,7 +34,7 @@ body {
     padding: 15px 40px;
     color:#fff;
     background-color:#8a68e0;
-    margin-top: 8px;
+    margin-top: 0px;
     margin-bottom: 8px; 
     border: 1px solid transparent;
     border-color: #8a68e0;
@@ -126,7 +129,7 @@ body {
 /*^^^ DEPRECATED, merged with .container*/
 
 .searchbox {
-    margin-top: 20%;
+    margin-top: 21%;
     border: none;
     font-family: Helvetica;
     font-size: 40px;
