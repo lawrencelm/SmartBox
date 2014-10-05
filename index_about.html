@@ -10,7 +10,7 @@
         <script src="annyang/annyang.js"></script>
         <!--<script src="js/annyang.js"></script>-->
     </head>
-    <body onload="document.getElementById('searchinput').focus();">
+    <body>
         <script>
             Parse.initialize('Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy', 'Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv');
         </script>
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <nav style="z-index:0" id="navigation" class="nav-extra navbar navbar-default navbar-inverse" role="navigation">
+            <nav style="z-index:0; position:fixed;" id="navigation" class="nav-extra navbar navbar-default navbar-inverse submitted" role="navigation">
                 <div class="collapse navbar-collapse">
                     <!-- <ul class="nav navbar-header"  id="navElems"> -->
                         <!-- <li id="navigationText"><a><span class="queryPrefix"></span>
@@ -56,13 +56,16 @@
                     <a id="login-button" style="cursor:pointer" class="btn btn-extra btn-default btn-lg pull-right">login</a>
                 </div>
             </nav>
-            <div style="z-index:98" class="searchbox">
-                <div><h1 class="logo"><span style="color:#8a68e0; font-weight: 300">smart</span>box</h1></div>
-                <input id="searchinput" type="text" placeholder="type something"></input>
+            <div style="z-index:99" class="searchbox submitted">
+                <div><img src="images/big_logo.png" class="logo"></img></div>
+                <input id="searchinput" type="text" placeholder="what do you need?"></input>
             </div>
             
             <div id="resultContainer">
-                
+            </div>
+
+            <div>
+                <center><iframe class="frame" style="display: none;" onload="this.style.display='block';" src="http://docs.google.com/viewer?url=http%3A%2F%2Flawrencemurata.com%2Fpitch.pdf&embedded=true" width="85%" height="1000"></iframe></center>
             </div>
 
         </div>
@@ -71,9 +74,6 @@
             <a href=<%=URL||URL[0]%>><div class="itemCont">
                 <img src=<%=pic||pic[0]%>></img>
             </div></a>
-        </script>
-        <script type="text/template" id="spotifyelement">
-            
         </script>
 
         <script src="js/frontend_backbone.js"></script>
