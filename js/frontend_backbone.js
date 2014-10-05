@@ -10,11 +10,6 @@ var Result_Item = Backbone.Model.extend({
         this.model.set('title', data.attributes.title[0]);
         console.log(this);
         return this;
-    },
-    append: function() {
-        /*var view = new Result_View({model:this});
-
-        $('#resultContainer').append(view.render().$el);*/
     }
 });
 
@@ -26,7 +21,9 @@ var Results = Backbone.Collection.extend({
         var view;
         setTimeout(function() {
         view = new Result_View({collection:this});
-        $('#resultContainer').append(view.render().$el);
+        var element = view.render().$el
+        $('#resultContainer').append(element);
+        console.log(element);
         }.bind(this), 200);
     }
 });

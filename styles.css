@@ -36,8 +36,22 @@ body {
     font-size: 58px;
     font-weight: 600;
     padding-top: 148px;
-    transform: translateX(-50%);
+    transform: translateX(-53%);
     font-family: "Open Sans";
+}
+
+.logo span.sub {
+    color:#8a68e0;
+    font-weight: 500;
+}
+
+.logo span.bold {
+    color:#8a68e0;
+    font-weight: 800;
+}
+
+.logo h1 {
+    font-size:140px;
 }
 
 .semibold {
@@ -157,7 +171,7 @@ body {
 }
 
 .searchbox.submitted {
-    margin-top: 10px;
+    margin-top: -230px;
     transition:.3s;
 }
 
@@ -221,6 +235,7 @@ input {
 
 #searchInput {
     border: none;
+    position:absolute;
     height: 38px;
     font-size: 26px;
     font-family: Open Sans;
