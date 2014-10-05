@@ -23,8 +23,10 @@ function annyangThread(callback){
         }
 
         };
-           function buyOnEbay(){
-
+           function buyOnEbay(item){
+              requestEbay(item, function(data) {
+                callback(data)
+              });
            }
 
            function bringFood(){
