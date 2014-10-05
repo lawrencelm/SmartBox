@@ -155,7 +155,7 @@ body {
 /*^^^ DEPRECATED, merged with .container*/
 
 .searchbox {
-    margin-top: 29%;
+    margin-top: 10%;
     border: none;
     font-family: Helvetica;
     font-size: 40px;
@@ -168,7 +168,7 @@ body {
 }
 
 .searchbox.submitted {
-    margin-top: 8px;
+    margin-top: -230px;
     transition:.3s;
 }
 
@@ -415,8 +415,7 @@ input {
 
 .resultCollection, #spotifyelement {
     margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     position:absolute;
     z-index: -1;
 }

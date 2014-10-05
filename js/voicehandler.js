@@ -52,14 +52,16 @@ function annyangThread(callback){
                           stop();
                           var matchedElement = document.getElementById('matched');
                               console.log("reached");
+                              console.log(data);
                               var imgURL=data.tracks.items[0].album.images[0].url||data.tracks.items[0].album.name;
                               var artistName= data.tracks.items[0].artists[0].name;
                               console.log(imgURL);
                               console.log(artistName);
                               console.log(song);
-                              var data = {"APItype":"SPOTIFY", "imgURL":"imgURL", "song":song, "artistName":artistName};
-                              callback(data);
+                              var apistructure = {"APItype":"SPOTIFY",
+                                                  "meta": {"imgURL":imgURL, "song":song, "artistName":artistName}};
                               audio = new Audio(data.tracks.items[0].preview_url);
+                              callback(apistructure);
                               audio.play();
                       }
                   }

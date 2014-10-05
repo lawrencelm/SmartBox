@@ -89,11 +89,12 @@ var Spotify_Item = Backbone.Model.extend({
 
 var Spotify_View = Backbone.View.extend({
     tagName: "div",
-    id: "spotifyElement",
+    id: "spotifyelement",
     initialize: function() {
-        this.template = _.template($('#spotifyElement').html());
+        this.template = _.template($('#spotifyelement').html());
     },
     render: function() {
+        console.log(this.model.attributes);
         this.$el.html(this.template(this.model.attributes));
         return this;
     }
@@ -106,12 +107,50 @@ var Spotify_View = Backbone.View.extend({
 var searchMoved = false;
 $(document).ready(function() {
     var submitState = function() {
-        $('.searchLanding, #navigation, .searchbox').addClass('submitted');
+        $('.searchLanding, #navigation, .searchbox, #spotifyelement').addClass('submitted');
     }
 
     annyangThread(function(response) {
-
+        submitState();
+        generate(response);
     });
+    
+    function generate(response) {
+                /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
+                /*$('#searchPrefix').css({'display': 'inline-block'});*/
+
+                //currently not useful.
+                var determineSearchMoved = function() {
+                    if ($('.searchbox').css('margin-top') === margin_searchAtTop)
+                        searchMoved = true;
+                }
+
+                var content;
+
+                var determineAPIView = function() {
+                    switch(response.APItype) {
+                        case "EBAY":
+                            console.log(response.list);
+                            content = new Results(response.list);
+                            margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
+                            break;
+                        case "SPOTIFY":
+                            console.log(response.meta);
+                            content = new Spotify_Item(response.meta);
+                            break;    
+                    }
+                }
+
+                determineAPIView();
+                /*if(!searchMoved) {
+                    $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
+                        function() {
+                            console.log('reached end of transition already');
+                            determineAPIView();}
+                    );
+                }
+                else determineAPIView();*/
+            }
 
     $('body').keypress(function(e) {
         if (e.keyCode === 13) {
@@ -126,42 +165,6 @@ $(document).ready(function() {
                     generate(response);
                 });
             }
-        }
-
-        function generate(response) {
-            /*$('#navigationText>a').append('<span id="query">' + query + '</span>');*/
-            /*$('#searchPrefix').css({'display': 'inline-block'});*/
-
-            //currently not useful.
-            var determineSearchMoved = function() {
-                if ($('.searchbox').css('margin-top') === margin_searchAtTop)
-                    searchMoved = true;
-            }
-
-            var content;
-
-            var determineAPIView = function() {
-                switch(response.APItype) {
-                    case "EBAY":
-                        console.log(response.list);
-                        content = new Results(response.list);
-                        margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
-                        break;
-                    case "SPOTIFY":
-                        content = new Spotify_Item(response.meta);
-                        break;    
-                }
-            }
-
-            determineAPIView();
-            /*if(!searchMoved) {
-                $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
-                    function() {
-                        console.log('reached end of transition already');
-                        determineAPIView();}
-                );
-            }
-            else determineAPIView();*/
         }
     });
 
