@@ -46,11 +46,11 @@ body {
 
 .btn-extra {
     padding: 10px 40px;
-    color:#fff;
-    background-color:#8a68e0;
-    margin-top: 8px;
-    margin-bottom: 8px; 
-    border: 1px solid transparent;
+    color:#8a68e0;
+    // background-color:#8a68e0;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border: 0px solid transparent;
     border-color: #8a68e0;
     font-family:"Open Sans";
     vertical-align:middle;
@@ -222,7 +222,7 @@ input {
     font-size: 26px;
     font-family: Open Sans;
     font-weight: 300;
-    // background: rgba(240, 240, 240, 1);
+    background: rgba(240, 240, 240, 1);
     padding: 30px;
 }
 
