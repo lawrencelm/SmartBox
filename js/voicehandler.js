@@ -21,11 +21,11 @@ function annyangThread(callback){
         }
 
         };
-          function buyOnEbay(item){
-            requestEbay(item,function(data){
-              console.log(data)
-            });
-          }
+           function buyOnEbay(item){
+              requestEbay(item, function(data) {
+                callback(data)
+              });
+           }
 
            function bringFood(){
            document.getElementById('food').className="ordrin-embed";
@@ -33,6 +33,21 @@ function annyangThread(callback){
            }
 
           function requestPhotos(term){
+            var url = 'https://secure.flickr.com/services/rest/?';
+                url +='method=flickr.photos.search&';
+                url +='api_key=02970fe33b397f5ac3934bdd232d1302&';
+                url +='text=' + encodeURIComponent(term) + '&';
+                url +='safe_search=1&';
+                url +='content_type=1&';
+                url +='sort=interestingness-desc&';
+                url +='per_page=20';
+
+            var req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            console.log(req.responseText);
+
+           function requestPhotos(term){
             var url = 'https://secure.flickr.com/services/rest/?';
                 url +='method=flickr.photos.search&';
                 url +='api_key=02970fe33b397f5ac3934bdd232d1302&';
@@ -64,10 +79,9 @@ function annyangThread(callback){
             callback(apistructure);
           }
 
+
           var audio = null;
           function playSong(song, artist) {
-              var recognizedElement = document.getElementById('recognized');
-              recognizedElement.innerText = 'Recognized "' + song + (artist ? ' by ' + artist : '') + '"';
               console.log("PlaySong", song);
               var req = new XMLHttpRequest();
               req.open('GET', 'https://api.spotify.com/v1/search?type=track&q=' + encodeURIComponent(song), true);
@@ -87,6 +101,7 @@ function annyangThread(callback){
                               console.log(song);
                               var apistructure = {"APItype":"SPOTIFY",
                                                   "meta": {"imgURL":imgURL, "song":song, "artistName":artistName}};
+                              console.log(apistructure);
                               audio = new Audio(data.tracks.items[0].preview_url);
                               callback(apistructure);
                               audio.play();

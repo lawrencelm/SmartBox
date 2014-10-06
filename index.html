@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!--<script src="app.js"></script>-->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
@@ -104,11 +105,15 @@
                     <a id="login-button" style="cursor:pointer" class="btn btn-extra btn-default btn-lg pull-right">login</a>
                 </div>
             </nav>
-            <div style="z-index:98" class="searchbox">
-                <!-- <span style="color:#8a68e0; font-weight: 300">smart</span>box</h1> -->
-                <div><img src="images/big_logo.png" alt=""></div>
-                <input id="searchinput" type="text" placeholder="What can we do for you?" ></input>
+                        <div style="z-index:98" class="searchbox">
+                <div><img src="images/big_logo.png" class="logo"></img></div>
+                <input id="searchinput" type="text" placeholder="what do you need?"></input>
             </div>
+            <!--<div style="z-index:98" class="searchbox">
+                <!-- <span style="color:#8a68e0; font-weight: 300">smart</span>box</h1> -->
+              <!--  <div><img src="images/big_logo.png" alt=""></div>
+                <input id="searchinput" type="text" placeholder="What can we do for you?" ></input>
+            </div>-->
             
             <div id="resultContainer">
                 
@@ -119,6 +124,7 @@
         <script type="text/template" id="result_item" style="visibility:hidden">
             <a href=<%= URL||URL[0] %>><div class="itemCont">
                 <img src=<%= pic||pic[0] %>>
+                <h3 style="color:#8a68e0"><%= "$" + price || imgTitle%></h3>
             </div></a>
         </script>
 
