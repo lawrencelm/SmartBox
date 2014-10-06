@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <!--<script src="app.js"></script>-->
+        <script src="app.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
@@ -44,7 +44,6 @@
         <script>
             Parse.initialize('Xbx1p6suP8Fd2FjL2qr98AktVB5WfV5fRom9a1Dy', 'Q5Br45nLQaq08jtkpoIix1C1DheI9d6wV7SqoFNv');
         </script>
-        <script src="js/ebayAPIHandler.js"></script>
         <script type="text/javascript" src="js/voicehandler.js"></script>
 
         <div class="ordrin-embed hidden" id="food" data-target="web" data-servers="test" data-pubKey="tkcAgJaKppAp_JYMEHXi6TOyrP19bFsJXdI6kyt7fOE" data-addr=getCurrentPosition() data-city="Lincoln" data-state="ME" data-zip="04457"> </div>
@@ -107,10 +106,9 @@
             </nav>
                         <div style="z-index:98" class="searchbox">
                 <div><img src="images/big_logo.png" class="logo"></img></div>
-
                 <input id="searchinput" type="text" placeholder="what can we do for you?"></input>
                 <br/><br/>
-                <!-- <a style="font-size: 14px; left: 0; right: 0;" href="https://play.google.com/store/music/category/CLASSICAL?hl=en">Feeling relaxed?</a> -->
+                <a style="font-size: 14px; left: 0; right: 0;" href="https://play.google.com/store/music/category/ROCK?hl=en">Feeling upbeat?</a>
             </div>
             <!--<div style="z-index:98" class="searchbox">
                 <!-- <span style="color:#8a68e0; font-weight: 300">smart</span>box</h1> -->
@@ -127,7 +125,6 @@
         <script type="text/template" id="result_item" style="visibility:hidden">
             <a href=<%= URL||URL[0] %>><div class="itemCont">
                 <img src=<%= pic||pic[0] %>>
-                <h3 style="color:#8a68e0"><%= "$" + price || imgTitle%></h3>
             </div></a>
         </script>
 
@@ -140,6 +137,7 @@
             </div>
         </script>
 
+        <script src="js/ebayAPIHandler.js"></script>
         <script src="js/frontend_backbone.js"></script>
         <script type="text/javascript">
         $( "#searchinput" ).keypress(function() {

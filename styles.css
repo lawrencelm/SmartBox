@@ -171,6 +171,11 @@ body {
     margin-top: 0px;
     transition:.3s;
 }
+
+.searchbox.fake_submitted {
+    margin-top: 10px;
+    transition:.3s;
+}
 .searchLanding.submitted {
     /*display:none;*/
 }

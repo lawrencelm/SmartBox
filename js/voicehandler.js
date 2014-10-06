@@ -3,13 +3,13 @@ function annyangThread(callback){
 
         // Let's define our first command. First the text we expect, and then the function it should call
         var commands = {
-            'play (the song) *song': playSong,
-            'play (the song) *song by *artist': playSong,
-             'stop (the music)': stop,
-              'buy (me) *item' :buyOnEbay,
-               'Bring (me) food' : bringFood,
-            'show me (pictures of) *term' : requestPhotos,
-            'google *term': function(term) {
+            '(smart box) play (the song) *song': playSong,
+            '(smart box) play (the song) *song by *artist': playSong,
+             '(smart box) stop (the music)': stop,
+              '(smart box) buy (me) *item' :buyOnEbay,
+               '(smart box) Bring (me) food' : bringFood,
+            '(smart box) show me (pictures of) *term' : requestPhotos,
+            '(smart box) google *term': function(term) {
                 var win = window.open('https://www.google.com/#q='+term, '_blank');
       if(win){
           //Browser has allowed it to be opened
