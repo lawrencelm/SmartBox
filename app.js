@@ -1,11 +1,9 @@
 //Simple demo for World Weather Online using ajax/jquery/underscore
 
 var express = require("express");
-<<<<<<< HEAD
-=======
+
 var SerialPort = require("serialport").SerialPort
 var serialPort = new SerialPort("/dev/tty.usbmodemfd121", {baudrate: 9600, parser: require("serialport").parsers.readline('\n')}, false);
->>>>>>> FETCH_HEAD
 
 var fs = require('fs');
 var concentration = false;
@@ -40,29 +38,16 @@ if(getDirectories().length > 0)
 
 var app = express();
 
-<<<<<<< HEAD
 app.use("", express.static("/Users/Lawrence/Documents/Git\ Hub/Smartbox"));
 
 app.get("/", function(req, res){
 	if(!concentration)
 	{
-        res.sendfile("./index_normal.html");
+        res.sendfile("./index.html");
     }
     else
     {
     	res.sendfile("./index_concentration.html");
-=======
-app.use("/", express.static("/Users/joshuapham/Documents/Web/universe"));
-
-app.get("/", function(req, res){
-	if(concentration)
-	{
-        res.sendfile("./index_concentration.html");
-    }
-    else
-    {
-    	res.sendfile("./index.html");
->>>>>>> FETCH_HEAD
     }
 });
 
