@@ -10,7 +10,7 @@ function annyangThread(callback){
              'stop (the music)': stop,
               'buy (me) *item' :buyOnEbay,
                'Bring (me) food' : bringFood,
-        //    'show me (pictures of) *term' : requestKittens,
+            'show me (pictures of) *term' : requestPhotos,
             'google *term': function(term) {
                 var win = window.open('https://www.google.com/#q='+term, '_blank');
       if(win){
@@ -23,8 +23,10 @@ function annyangThread(callback){
         }
 
         };
-           function buyOnEbay(){
-
+           function buyOnEbay(item){
+              requestEbay(item, function(data) {
+                callback(data)
+              });
            }
 
            function bringFood(){
@@ -36,11 +38,41 @@ function annyangThread(callback){
 
            }
 
+           function requestPhotos(term){
+            var url = 'https://secure.flickr.com/services/rest/?';
+                url +='method=flickr.photos.search&';
+                url +='api_key=02970fe33b397f5ac3934bdd232d1302&';
+                url +='text=' + encodeURIComponent(term) + '&';
+                url +='safe_search=1&';
+                url +='content_type=1&';
+                url +='sort=interestingness-desc&';
+                url +='per_page=20';
+
+            var req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            console.log(req.responseText);
+
+            var kittens = req.responseXML.querySelectorAll('photo');
+            //console.log(kittens);
+            var photos = []
+            for (var i = 0; i < kittens.length; i++) {
+              var photo = kittens[i];
+              imgURL = photo.getAttribute("farm")+".static.flickr.com/" + photo.getAttribute("server") +
+              "/" + photo.getAttribute("id") +
+              "_" + photo.getAttribute("secret") +
+              "_s.jpg";
+              imgTitle=photo.getAttribute('title');
+              photos.push({"imgURL":imgURL, "imgTitle":imgTitle})
+            }
+            apistructure={"APItype":"FLICKR", "photos":photos}
+            console.log(apistructure);
+            callback(apistructure);
+          }
+
 
           var audio = null;
           function playSong(song, artist) {
-              var recognizedElement = document.getElementById('recognized');
-              recognizedElement.innerText = 'Recognized "' + song + (artist ? ' by ' + artist : '') + '"';
               console.log("PlaySong", song);
               var req = new XMLHttpRequest();
               req.open('GET', 'https://api.spotify.com/v1/search?type=track&q=' + encodeURIComponent(song), true);
@@ -60,6 +92,7 @@ function annyangThread(callback){
                               console.log(song);
                               var apistructure = {"APItype":"SPOTIFY",
                                                   "meta": {"imgURL":imgURL, "song":song, "artistName":artistName}};
+                              console.log(apistructure);
                               audio = new Audio(data.tracks.items[0].preview_url);
                               callback(apistructure);
                               audio.play();

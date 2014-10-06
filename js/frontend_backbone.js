@@ -5,7 +5,7 @@ var Result_Item = Backbone.Model.extend({
     },
     parse: function(data) {
         this.model.set('URL', data.attributes.URL[0]);
-        this.model.set('pic', data.attributes.pic[0]);
+        //this.model.set('pic', data.attributes.pic[0]);
         this.model.set('title', data.attributes.title[0]);
         console.log(this);
         return this;
@@ -20,11 +20,14 @@ var Results = Backbone.Collection.extend({
         var view;
 
         setTimeout(function() {
-        view = new Result_View({collection:this});
-        var element = view.render().$el;
+        this.view = new Result_View({collection:this});
+        var element = this.view.render().$el;
         $('#resultContainer').append(element);
         console.log(element);
         }.bind(this), 100);
+    },
+    move: function() {
+        this.view.move();
     }
 });
 
@@ -34,7 +37,11 @@ var Result_View = Backbone.View.extend({
         $('body').keypress(function(e) {
             if (e.keyCode === 13 && this.rendered)
                 $(this.$el).addClass('moved');
-        }.bind(this))
+        }.bind(this));
+    },
+    move: function() {
+        if (this.rendered)
+                $(this.$el).addClass('moved');
     },
     makeRow: function() {
         console.log('result_view');
@@ -71,19 +78,30 @@ var Result_Item_View = Backbone.View.extend({
         $('#result_item').css({'display': 'inline-block'});
     },
     render: function() {
+        console.log(this);
         this.$el.html(this.template(this.model.attributes));
         console.log(this);
         return this;
     }
 });
-
+ 
 var Spotify_Item = Backbone.Model.extend({
     initialize: function() {
         setTimeout(function() {
-        var view = new Spotify_View({model: this});
-        var element = view.render().$el;
+        this.view = new Spotify_View({model: this});
+        var element = this.view.render().$el;
         $('#resultContainer').append(element);
         }.bind(this), 100);
+
+        //this.on({'change':this.view.update})
+    },
+    move: function() {
+        this.view.move();
+    },
+    modify: function(meta) {
+        this.set({'imgURL':meta.imgURL});
+        this.set({'song':meta.song});
+        this.set({'artistName':meta.artistName});
     }
 });
 
@@ -96,6 +114,9 @@ var Spotify_View = Backbone.View.extend({
     render: function() {
         this.$el.html(this.template(this.model.attributes));
         return this;
+    },
+    move: function() {
+        $(this.$el).addClass('moved');
     }
 });
 
@@ -108,6 +129,8 @@ $(document).ready(function() {
     var submitState = function() {
         $('.searchLanding, #navigation, .searchbox').addClass('submitted');
     }
+
+    var content;
 
     annyangThread(function(response) {
         submitState();
@@ -124,8 +147,6 @@ $(document).ready(function() {
                         searchMoved = true;
                 }
 
-                var content;
-
                 var determineAPIView = function() {
                     switch(response.APItype) {
                         case "EBAY":
@@ -133,13 +154,22 @@ $(document).ready(function() {
                             content = new Results(response.list);
                             margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
                             break;
+                        case "FLICKR":
+                            $(response.photos).each(function(index, item) {
+                                item.imgURL = item.imgURL.substring(2);
+                            });
+                            console.log(response.photos);
+                            content = new Results(response.photos);
+                            margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
+                            break;
                         case "SPOTIFY":
                             console.log(response.meta);
                             content = new Spotify_Item(response.meta);
-                            break;    
+                            content.modify(response.meta);
+                            break;
                     }
                 }
-
+                if (content) content.move();
                 determineAPIView();
                 /*if(!searchMoved) {
                     $(".searchbox").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', 
