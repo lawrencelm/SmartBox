@@ -44,7 +44,6 @@ function annyangThread(callback){
             var req = new XMLHttpRequest();
             req.open("GET", url, false);
             req.send(null);
-            console.log(req.responseText);
 
             var kittens = req.responseXML.querySelectorAll('photo');
             //console.log(kittens);
@@ -59,7 +58,6 @@ function annyangThread(callback){
               photos.push({"imgURL":imgURL, "imgTitle":imgTitle})
             }
             apistructure={"APItype":"FLICKR", "photos":photos}
-            console.log(apistructure);
             callback(apistructure);
           }
 
@@ -76,16 +74,16 @@ function annyangThread(callback){
                       if (data.tracks.items[0]) {
                           stop();
                           var matchedElement = document.getElementById('matched');
-                              console.log("reached");
-                              console.log(data);
+                              // console.log("reached");
+                              // console.log(data);
                               var imgURL=data.tracks.items[0].album.images[0].url||data.tracks.items[0].album.name;
                               var artistName= data.tracks.items[0].artists[0].name;
-                              console.log(imgURL);
-                              console.log(artistName);
-                              console.log(song);
+                              // console.log(imgURL);
+                              // console.log(artistName);
+                              // console.log(song);
                               var apistructure = {"APItype":"SPOTIFY",
                                                   "meta": {"imgURL":imgURL, "song":song, "artistName":artistName}};
-                              console.log(apistructure);
+                              // console.log(apistructure);
                               audio = new Audio(data.tracks.items[0].preview_url);
                               callback(apistructure);
                               audio.play();
