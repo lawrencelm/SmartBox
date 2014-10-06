@@ -198,6 +198,15 @@ $(document).ready(function() {
                 });
             }
 
+            else if (query.substring(0,"show me".length)==="show me") {
+                query = query.substring("show me".length + 1);
+                submitState();
+                requestFlickr(query, function(data) {
+                    response = data;
+                    generate(response);
+                });
+            }
+
             else if (query.substring(0,"play".length)==="play") {
                 query = query.substring("play".length + 1);
                 submitState();

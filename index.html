@@ -140,7 +140,7 @@
         <script type="text/javascript">
         $( "#searchinput" ).keypress(function() {
             console.log(document.getElementById('searchinput').value)
-            if (document.getElementById('searchinput').value.substring(0,"buy".length)==="buy"){
+            if (document.getElementById('searchinput').value.substring(0,"buy".length)==="buy" || document.getElementById('searchinput').value.substring(0,"show".length)==="show"){
                 console.log('yea')
                 throw { name: 'FatalError', message: 'Something went badly wrong' };
                             }
