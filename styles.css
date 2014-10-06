@@ -419,8 +419,7 @@ input {
 
 .resultCollection, #spotifyelement {
     margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     position:absolute;
     z-index: -1;
 }
