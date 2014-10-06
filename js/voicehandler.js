@@ -7,10 +7,16 @@ function annyangThread(callback){
         var commands = {
             'play (the song) *song': playSong,
             'play (the song) *song by *artist': playSong,
+            'smartbox play (the song) *song': playSong,
+            'smartbox play (the song) *song by *artist': playSong,
              'stop (the music)': stop,
+             'smartbox stop (the music)': stop,
               'buy (me) *item' :buyOnEbay,
+              'smartbox buy (me) *item' :buyOnEbay,
                'Bring (me) food' : bringFood,
+               'smartbox Bring (me) food' : bringFood,
             'show me (pictures of) *term' : requestPhotos,
+            'smartbox show me (pictures of) *term' : requestPhotos,
             'google *term': function(term) {
                 var win = window.open('https://www.google.com/#q='+term, '_blank');
       if(win){
