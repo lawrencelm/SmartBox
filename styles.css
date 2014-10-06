@@ -372,8 +372,11 @@ input {
 #resultContainer {
     margin: 0 20px;
     margin-top: 65px;
+    margin-left:100px;
+    position: relative;
     width:100%;
     height:100%;
+    text-align: center;
 }
 
 .itemCont {
@@ -416,13 +419,21 @@ input {
     width:450px;
 }
 
+#songContainer {
+    display: inline-block;
+}
+
 /*Universal Backbone containers that slide out, yet are named different*/
 
 .resultCollection, #spotifyelement {
     margin: 0 auto;
     left: 0;
-    position:absolute;
+    /*position:absolute;*/
     z-index: 97;
+    position:relative;
+}
+#spotifyelement {
+    margin-left: -10%;
 }
 
 .resultCollection.moved, #spotifyelement.moved {
