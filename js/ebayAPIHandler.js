@@ -36,7 +36,7 @@ var requestEbay = function(keywordString, callback) { //callback takes response 
 	    url += "&callback=cb_log";
 	    url += "&REST-PAYLOAD";
 	    url += "&keywords=" + keywordString;
-	    url += "&paginationInput.entriesPerPage=10";
+	    url += "&paginationInput.entriesPerPage=20";
 
     var s = document.createElement('script');
     s.src = url;
