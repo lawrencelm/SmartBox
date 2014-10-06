@@ -8,14 +8,15 @@ var cb_log = function(data){
         console.log(i);
         if (item.sellingStatus[0].currentPrice[0]['__value__']&&item.title&&item.galleryPlusPictureURL||item.galleryURL){
             var price    = item.sellingStatus[0].currentPrice[0]['__value__'];
-            var title    = item.title;
+            var name    = item.title;//item.title refers to NAME of item
             var pic      = item.galleryPlusPictureURL || item.galleryURL;
             var URL      = item.viewItemURL;
-            console.log(price);
-            console.log(pic);
-            console.log(title);
-            searchresults.push({"title":title, "price":price, "pic":pic, "URL":URL});
-        }
+            console.log(URL);
+            // console.log(price);
+            // console.log(pic);
+            // console.log(name);
+            searchresults.push({"title":price, "subtitle":name, "pic":pic, "url":URL});//IMPORTANT: title is name of item
+        }																				//subtitle is the price.
     }
     var apiData = {"APItype":"EBAY", "list":searchresults};
     console.log(apiData);
@@ -26,6 +27,7 @@ var requestEbay = function(keywordString, callback) { //callback takes response 
     keywordString = keywordString.split(' ').join('%20');
     console.log(keywordString);
     wrapper = callback;
+    console.log(wrapper);
 
 	var url = "http://svcs.ebay.com/services/search/FindingService/v1";
 	    url += "?OPERATION-NAME=findItemsByKeywords";

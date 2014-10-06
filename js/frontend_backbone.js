@@ -150,16 +150,19 @@ $(document).ready(function() {
                 var determineAPIView = function() {
                     switch(response.APItype) {
                         case "EBAY":
+                            $(response.photos).each(function(index, item) {
+                                item.title = "$"+item.title;
+                            });
                             console.log(response.list);
                             content = new Results(response.list);
                             margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
                             break;
                         case "FLICKR":
-                            $(response.photos).each(function(index, item) {
-                                item.imgURL = item.imgURL.substring(2);
-                            });
-                            console.log(response.photos);
-                            content = new Results(response.photos);
+                            // $(response.list).each(function(index, item) {
+                            //      item.pic = item.pic.substring(http://:8000/static.flickr.com/7406/10126462554_8b2cf66976_s.jpg);
+                            // });
+                            console.log(response.list);
+                            content = new Results(response.list);
                             margin_searchAtTop = $(this).css('margin-top'); //currently not useful.
                             break;
                         case "SPOTIFY":
@@ -193,6 +196,12 @@ $(document).ready(function() {
                     response = data;
                     generate(response);
                 });
+            }
+
+            else if (query.substring(0,"play".length)==="play") {
+                query = query.substring("play".length + 1);
+                submitState();
+
             }
         }
     });

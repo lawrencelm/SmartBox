@@ -8,7 +8,7 @@ function annyangThread(callback){
              '(smart box) stop (the music)': stop,
               '(smart box) buy (me) *item' :buyOnEbay,
                '(smart box) Bring (me) food' : bringFood,
-            '(smart box) show me (pictures of) *term' : requestPhotos,
+            '(smart box) show me (pictures of) *term' : showPhotos,
             '(smart box) google *term': function(term) {
                 var win = window.open('https://www.google.com/#q='+term, '_blank');
                 if(win){
@@ -20,9 +20,9 @@ function annyangThread(callback){
                 }
             }
         };
-           function buyOnEbay(item){
-              requestEbay(item, function(data) {
-                callback(data)
+           function buyOnEbay(keywordString){
+              requestEbay(keywordString, function(data){
+                callback(data);
               });
            }
 
@@ -31,35 +31,11 @@ function annyangThread(callback){
 
            }
 
-           function requestPhotos(term){
-            var url = 'https://secure.flickr.com/services/rest/?';
-                url +='method=flickr.photos.search&';
-                url +='api_key=02970fe33b397f5ac3934bdd232d1302&';
-                url +='text=' + encodeURIComponent(term) + '&';
-                url +='safe_search=1&';
-                url +='content_type=1&';
-                url +='sort=interestingness-desc&';
-                url +='per_page=20';
-
-            var req = new XMLHttpRequest();
-            req.open("GET", url, false);
-            req.send(null);
-
-            var kittens = req.responseXML.querySelectorAll('photo');
-            //console.log(kittens);
-            var photos = []
-            for (var i = 0; i < kittens.length; i++) {
-              var photo = kittens[i];
-              imgURL = photo.getAttribute("farm")+".static.flickr.com/" + photo.getAttribute("server") +
-              "/" + photo.getAttribute("id") +
-              "_" + photo.getAttribute("secret") +
-              "_s.jpg";
-              imgTitle=photo.getAttribute('title');
-              photos.push({"imgURL":imgURL, "imgTitle":imgTitle})
-            }
-            apistructure={"APItype":"FLICKR", "photos":photos}
-            callback(apistructure);
-          }
+           function showPhotos(keywordString){
+              requestFlickr(keywordString,function(data){
+                callback(data)
+              });
+           }
 
 
           var audio = null;
