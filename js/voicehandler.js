@@ -1,3 +1,5 @@
+var playSong;
+
 function annyangThread(callback){
   $.getScript("../annyang/annyang.js", function(){
 
@@ -39,7 +41,7 @@ function annyangThread(callback){
 
 
           var audio = null;
-          function playSong(song, artist) {
+          playSong = function(song, artist) {
               console.log("PlaySong", song);
               var req = new XMLHttpRequest();
               req.open('GET', 'https://api.spotify.com/v1/search?type=track&q=' + encodeURIComponent(song), true);

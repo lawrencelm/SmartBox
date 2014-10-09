@@ -209,7 +209,10 @@ $(document).ready(function() {
 
             else if (query.substring(0,"play".length)==="play") {
                 query = query.substring("play".length + 1);
+                if ("by".split() in query.split()) var artist = query.substring((query.search("by") + 2));
+                playSong(query, artist);
                 submitState();
+
 
             }
         }
